@@ -1264,6 +1264,8 @@
     gradientAlpha: 0.65,
     gradientSize: 1.4,
     gradientHue: 0,
+    sizeRange: 0.26,
+    alphaRange: 1.0,
   };
 
   const STORAGE_KEY = 'divinus-dotgrid-cfg';
@@ -1325,7 +1327,11 @@
         for (let i = 0; i < cols; i++) {
           const x = offX + i * SP;
           const y = offY + j * SP;
-          this.dots.push({ ox: x, oy: y, x: x, y: y, vx: 0, vy: 0 });
+          this.dots.push({
+            ox: x, oy: y, x: x, y: y, vx: 0, vy: 0,
+            sf: 1 - Math.random() * CFG.sizeRange,
+            af: 1 - Math.random() * CFG.alphaRange,
+          });
         }
       }
     }
@@ -1479,9 +1485,12 @@
             }
           }
         }
+        // Per-dot size/alpha variance for organic texture (Size range / Opacity range).
+        const fr = radius * (d.sf !== undefined ? d.sf : 1);
+        const fa = alpha * (d.af !== undefined ? d.af : 1);
         ctx.beginPath();
-        ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${alpha})`;
-        ctx.arc(d.x, d.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${fa})`;
+        ctx.arc(d.x, d.y, fr, 0, Math.PI * 2);
         ctx.fill();
       }
     }
@@ -1522,7 +1531,11 @@
         for (let i = 0; i < cols; i++) {
           const x = offX + i * SP;
           const y = offY + j * SP;
-          this.dots.push({ ox: x, oy: y, x: x, y: y, vx: 0, vy: 0 });
+          this.dots.push({
+            ox: x, oy: y, x: x, y: y, vx: 0, vy: 0,
+            sf: 1 - Math.random() * CFG.sizeRange,
+            af: 1 - Math.random() * CFG.alphaRange,
+          });
         }
       }
     }
@@ -1660,9 +1673,12 @@
             }
           }
         }
+        // Per-dot size/alpha variance for organic texture (Size range / Opacity range).
+        const fr = radius * (d.sf !== undefined ? d.sf : 1);
+        const fa = alpha * (d.af !== undefined ? d.af : 1);
         ctx.beginPath();
-        ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${alpha})`;
-        ctx.arc(d.x, d.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${fa})`;
+        ctx.arc(d.x, d.y, fr, 0, Math.PI * 2);
         ctx.fill();
       }
     }
@@ -1697,6 +1713,8 @@
           ${slider('dotAlpha', 'Dot intensity', 0.04, 0.5, 0.01)}
           ${slider('glowAlpha', 'Hover glow', 0.1, 1, 0.01)}
           ${slider('bgOpacity', 'Background opacity', 0, 1, 0.01)}
+          ${slider('sizeRange', 'Size range', 0, 1, 0.01)}
+          ${slider('alphaRange', 'Opacity range', 0, 1, 0.01)}
         </div>
         <div class="group">
           <div class="group-title">Gradient reveal</div>
@@ -1741,7 +1759,9 @@
         CFG[key] = parseFloat(input.value);
         setLabel();
         persist();
-        const rebuild = key === 'spacing';
+        // Spacing changes the grid; size/alpha range changes the per-dot
+        // random factors — both require a rebuild of the dot array.
+        const rebuild = key === 'spacing' || key === 'sizeRange' || key === 'alphaRange';
         notifyAll(rebuild);
       });
     });
