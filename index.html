@@ -1216,8 +1216,7 @@
   // Note: don't call rebuildGradientStops() yet — CFG is declared below.
   // First draw will trigger it via the `useGradient` branch.
 
-  // Selector for elements that should mute the gradient (legibility over flair).
-  // When the cursor is inside any of these, dots blend toward white.
+  // Selector for elements whose text should mute the gradient (legibility over flair).
   const TEXT_LEGIBILITY_SELECTOR = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'p', 'li', 'dl', 'dt', 'dd', 'label',
@@ -1225,6 +1224,41 @@
     'blockquote', 'code', 'pre', 'time', 'figcaption',
     'input', 'textarea',
   ].join(',');
+
+  // Precise hit-test: only true when cursor is over an actually-rendered line
+  // of text, not just inside the text element's bounding box. Walks each text
+  // node inside the matched element and uses Range.getClientRects(), which
+  // returns one rect per *visible* line — sized to the rendered glyphs, not
+  // the container. Empty space inside a <p>/<h1> box now reads as "no text".
+  function isOverText(target, clientX, clientY) {
+    if (!target || !target.closest) return false;
+    const el = target.closest(TEXT_LEGIBILITY_SELECTOR);
+    if (!el) return false;
+    // Form fields don't expose text nodes for their value — fall back to the
+    // element box. The native I-beam takes over via `cursor: text` anyway.
+    if (el.matches('input, textarea, [contenteditable="true"]')) return true;
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        return n.nodeValue && n.nodeValue.trim().length
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_REJECT;
+      },
+    });
+    const range = document.createRange();
+    let node;
+    while ((node = walker.nextNode())) {
+      range.selectNodeContents(node);
+      const rects = range.getClientRects();
+      for (let i = 0; i < rects.length; i++) {
+        const r = rects[i];
+        if (clientX >= r.left && clientX <= r.right &&
+            clientY >= r.top  && clientY <= r.bottom) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
   // Sample interpolated rgb at gradient position t (0..1).
   // Returns null when t is out of range (caller skips the dot).
@@ -1344,8 +1378,7 @@
         this.mouse.y = e.clientY - rect.top;
         this.mouse.active = true;
         this.mouse.lastMove = performance.now();
-        const t = e.target;
-        this.mouse.overText = !!(t && t.closest && t.closest(TEXT_LEGIBILITY_SELECTOR));
+        this.mouse.overText = isOverText(e.target, e.clientX, e.clientY);
         this.start();
       });
       this.el.addEventListener('pointerleave', () => {
@@ -1547,8 +1580,7 @@
         this.mouse.y = e.clientY;
         this.mouse.active = true;
         this.mouse.lastMove = performance.now();
-        const t = e.target;
-        this.mouse.overText = !!(t && t.closest && t.closest(TEXT_LEGIBILITY_SELECTOR));
+        this.mouse.overText = isOverText(e.target, e.clientX, e.clientY);
         this.start();
       }, { passive: true });
       window.addEventListener('pointerleave', () => { this.mouse.active = false; });
@@ -1899,8 +1931,7 @@
         this.mouse.y = e.clientY - rect.top;
         this.mouse.active = true;
         this.mouse.lastMove = performance.now();
-        const t = e.target;
-        this.mouse.overText = !!(t && t.closest && t.closest(TEXT_LEGIBILITY_SELECTOR));
+        this.mouse.overText = isOverText(e.target, e.clientX, e.clientY);
       });
       // On leave: three-phase release that returns the swarm to its
       // original uniform-drift state:
