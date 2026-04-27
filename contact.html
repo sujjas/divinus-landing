@@ -47,6 +47,10 @@
       user-select: text;
       cursor: text !important;
     }
+    .cc-select option {
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+    }
     @media (pointer: coarse) {
       body, body * { cursor: auto !important; }
       #cursor { display: none !important; }
@@ -601,11 +605,42 @@
                   Phone number <span class="text-[#C9A84C]">*</span>
                 </label>
                 <div class="flex items-end border-b border-neutral-700 focus-within:border-neutral-50 transition">
-                  <span class="text-xs font-mono text-neutral-500 pb-3 mr-3">+256</span>
+                  <select id="phone-cc" name="phone_cc" aria-label="Phone country code"
+                          class="cc-select bg-transparent text-base text-neutral-50 py-3 mr-3 focus:outline-none appearance-none cursor-pointer"
+                          style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%226%22 viewBox=%220 0 12 8%22 fill=%22none%22 stroke=%22%236b7280%22 stroke-width=%221.5%22><path d=%22M1 1.5l5 5 5-5%22/></svg>'); background-repeat: no-repeat; background-position: right 0 center; padding-right: 14px;">
+                    <option value="+256" selected>🇺🇬 +256</option>
+                    <option value="+254">🇰🇪 +254</option>
+                    <option value="+255">🇹🇿 +255</option>
+                    <option value="+250">🇷🇼 +250</option>
+                    <option value="+233">🇬🇭 +233</option>
+                    <option value="+234">🇳🇬 +234</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+268">🇸🇿 +268</option>
+                    <option value="+260">🇿🇲 +260</option>
+                    <option value="+251">🇪🇹 +251</option>
+                    <option value="+20">🇪🇬 +20</option>
+                    <option value="+212">🇲🇦 +212</option>
+                    <option value="+1-us">🇺🇸 +1</option>
+                    <option value="+1-ca">🇨🇦 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+974">🇶🇦 +974</option>
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+86">🇨🇳 +86</option>
+                    <option value="+81">🇯🇵 +81</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+52">🇲🇽 +52</option>
+                  </select>
                   <input type="tel" id="phone" name="phone" required placeholder="Enter phone number"
                          class="flex-1 bg-transparent px-0 py-3 text-base text-neutral-50 placeholder:text-neutral-600 focus:outline-none">
                 </div>
-                <p class="mt-2 text-xs text-neutral-500">Include your country code if outside Uganda.</p>
               </div>
 
               <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
@@ -644,7 +679,39 @@
                   WhatsApp number <span class="text-neutral-600 font-normal">(optional)</span>
                 </label>
                 <div class="flex items-end border-b border-neutral-700 focus-within:border-neutral-50 transition">
-                  <span class="text-xs font-mono text-neutral-500 pb-3 mr-3">+256</span>
+                  <select id="whatsapp-cc" name="whatsapp_cc" aria-label="WhatsApp country code"
+                          class="cc-select bg-transparent text-base text-neutral-50 py-3 mr-3 focus:outline-none appearance-none cursor-pointer"
+                          style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%226%22 viewBox=%220 0 12 8%22 fill=%22none%22 stroke=%22%236b7280%22 stroke-width=%221.5%22><path d=%22M1 1.5l5 5 5-5%22/></svg>'); background-repeat: no-repeat; background-position: right 0 center; padding-right: 14px;">
+                    <option value="+256" selected>🇺🇬 +256</option>
+                    <option value="+254">🇰🇪 +254</option>
+                    <option value="+255">🇹🇿 +255</option>
+                    <option value="+250">🇷🇼 +250</option>
+                    <option value="+233">🇬🇭 +233</option>
+                    <option value="+234">🇳🇬 +234</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+268">🇸🇿 +268</option>
+                    <option value="+260">🇿🇲 +260</option>
+                    <option value="+251">🇪🇹 +251</option>
+                    <option value="+20">🇪🇬 +20</option>
+                    <option value="+212">🇲🇦 +212</option>
+                    <option value="+1-us">🇺🇸 +1</option>
+                    <option value="+1-ca">🇨🇦 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+974">🇶🇦 +974</option>
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+86">🇨🇳 +86</option>
+                    <option value="+81">🇯🇵 +81</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+52">🇲🇽 +52</option>
+                  </select>
                   <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number"
                          class="flex-1 bg-transparent px-0 py-3 text-base text-neutral-50 placeholder:text-neutral-600 focus:outline-none">
                 </div>
