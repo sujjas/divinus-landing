@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/divinus-home.html", "destination": "/", "permanent": true },
+    { "source": "/divinus-home", "destination": "/", "permanent": true }
+  ]
+}
