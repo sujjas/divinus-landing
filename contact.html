@@ -475,13 +475,61 @@
         <li><a href="divinus-home.html#about" class="hover:text-neutral-50 transition">About</a></li>
         <li><a href="contact.html" class="text-neutral-50 font-medium" aria-current="page">Contact</a></li>
       </ul>
-      <a href="#partner-form" class="ml-7 inline-flex items-center gap-2 rounded-full bg-neutral-50 px-4 py-2 text-xs font-semibold text-neutral-950 hover:bg-neutral-200 transition">
+      <a href="#partner-form" class="hidden md:inline-flex ml-7 items-center gap-2 rounded-full bg-neutral-50 px-4 py-2 text-xs font-semibold text-neutral-950 hover:bg-neutral-200 transition">
         Talk to us
         <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
       </a>
+      <!-- Hamburger button — mobile only -->
+      <button id="mobile-menu-open" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"
+              class="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 text-neutral-50">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
+        </svg>
+      </button>
     </div>
   </nav>
 </header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MOBILE MENU OVERLAY — full-screen, fades in on hamburger click
+═══════════════════════════════════════════════════════════ -->
+<div id="mobile-menu" class="md:hidden fixed inset-0 z-[60] bg-neutral-950 flex flex-col"
+     style="opacity: 0; pointer-events: none; transition: opacity 220ms ease;"
+     aria-hidden="true" role="dialog" aria-modal="true" aria-label="Site menu">
+  <div class="flex h-16 items-center px-6 border-b border-neutral-800">
+    <span class="flex items-center gap-2.5 mr-auto">
+      <svg class="h-6 w-auto text-neutral-50" viewBox="0 0 115.95 118.36" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M57.97,118.36C26.01,118.36,0,92.35,0,60.38V0H115.95V60.38c0,31.97-26.01,57.97-57.97,57.97ZM2.02,2.02V60.38c0,30.85,25.1,55.95,55.95,55.95s55.95-25.1,55.95-55.95V2.02H2.02Z"/>
+        <path d="M62.24,34.57c-1.95-1.25-4.47-1.88-7.56-1.88h-3.7c-.04,3.09-.07,6.21-.07,9.37v21.63c0,3.2,.03,6.37,.07,9.51h3.43c3.18,0,5.77-.63,7.76-1.88,1.99-1.25,3.46-3.37,4.4-6.35,.94-2.97,1.41-6.99,1.41-12.06s-.47-9.06-1.41-12.02c-.94-2.95-2.38-5.06-4.33-6.31Z"/>
+        <path d="M13.54,13.8V60.12c0,24.54,19.89,44.43,44.43,44.43s44.43-19.89,44.43-44.43V13.8H13.54Zm61.66,51.13c-1.99,3.32-4.79,5.85-8.4,7.59-3.61,1.75-7.8,2.62-12.6,2.62h-16.45v-1.41l1.34-.47c1.44-.45,2.15-1.57,2.15-3.37,.04-2.55,.07-5.16,.07-7.82v-18.3c0-2.6-.03-5.2-.07-7.8,0-1.83-.69-2.97-2.08-3.43l-1.41-.4v-1.41h17.67c4.7,0,8.75,.88,12.16,2.62,3.4,1.75,6.02,4.26,7.86,7.55,1.83,3.29,2.75,7.27,2.75,11.92s-.99,8.78-2.99,12.09Z"/>
+      </svg>
+      <span class="text-xl font-bold tracking-tight text-neutral-50">Divinus</span>
+    </span>
+    <button id="mobile-menu-close" type="button" aria-label="Close menu"
+            class="inline-flex items-center justify-center w-10 h-10 -mr-2 text-neutral-50">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="flex-1 px-6 py-10" aria-label="Mobile primary">
+    <ul class="space-y-6 text-3xl font-bold tracking-tight text-neutral-50">
+      <li><a href="divinus-home.html#programs" class="hover:text-neutral-400 transition">Programs</a></li>
+      <li><a href="divinus-home.html#chapters" class="hover:text-neutral-400 transition">Chapters</a></li>
+      <li><a href="divinus-home.html#about" class="hover:text-neutral-400 transition">About</a></li>
+      <li><a href="contact.html" class="hover:text-neutral-400 transition" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="px-6 pb-10 pt-8 border-t border-neutral-800">
+    <a href="#partner-form"
+       class="inline-flex items-center gap-2 rounded-full bg-neutral-50 px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 transition">
+      Talk to us
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+    </a>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════
      BECOME A PARTNER — single section, sticky brand column
@@ -2005,6 +2053,39 @@
     sections.forEach(s => io.observe(s));
   }
 
+  /* ─── Mobile menu (hamburger) ─────────────────────────────
+   * Full-screen overlay on small screens. Fades in via inline opacity
+   * + pointer-events. Closes on X click, link click, or Escape.
+   * ──────────────────────────────────────────────────────── */
+  function initMobileMenu() {
+    const openBtn = document.getElementById('mobile-menu-open');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const menu = document.getElementById('mobile-menu');
+    if (!openBtn || !closeBtn || !menu) return;
+
+    const open = () => {
+      menu.style.opacity = '1';
+      menu.style.pointerEvents = 'auto';
+      menu.setAttribute('aria-hidden', 'false');
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      menu.style.opacity = '0';
+      menu.style.pointerEvents = 'none';
+      menu.setAttribute('aria-hidden', 'true');
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.getAttribute('aria-hidden') === 'false') close();
+    });
+  }
+
   function init() {
     const bg = document.getElementById('bg-dotgrid');
     if (bg && !bg.__dotgrid) {
@@ -2022,6 +2103,7 @@
       if (!el.__particles) el.__particles = new ParticleField(el);
     });
     initEntranceFx();
+    initMobileMenu();
     // Tweak panel — hidden by default. Reveal by adding ?tweaks=1
     // to the URL, or press Shift+T anytime to toggle it.
     const showPanel = new URLSearchParams(location.search).has('tweaks');
