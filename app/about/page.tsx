@@ -277,29 +277,29 @@ export default function AboutPage() {
       </section>
 
       {/* LEADERSHIP */}
-      <section data-fx="gsap" data-section="leadership" className="border-t border-neutral-800 py-24 sm:py-32" aria-labelledby="leadership-title">
+      <section data-fx="gsap" data-section="leadership" className="border-t border-neutral-800 py-20 sm:py-24" aria-labelledby="leadership-title">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10">
-            <div className="lg:col-span-5">
+          {/* Intro — single block; eyebrow + tag, title + lede aligned to one column */}
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Leadership</p>
-              <h2 id="leadership-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">The team</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">behind the standard.</span></span>
-              </h2>
+              <span className="inline-flex items-center rounded-full border border-neutral-800 bg-neutral-950 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.16em] text-[#C9A84C]">
+                Coming soon
+              </span>
             </div>
-            <div className="lg:col-span-7 lg:pl-6 space-y-6">
-              <p className="text-lg leading-[1.65] text-neutral-300 text-pretty">
-                Divinus is led by a team with experience across strategy, technology,
-                finance, and community development.
-              </p>
-              <p className="text-base leading-[1.65] text-neutral-500 text-pretty">
-                Full leadership profiles will be published with the next site release.
-              </p>
-            </div>
+            <h2 id="leadership-title" className="mt-6 text-[clamp(36px,5.4vw,72px)] font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
+              <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">The team</span></span>
+              <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">behind the standard.</span></span>
+            </h2>
+            <p className="mt-8 text-lg leading-[1.65] text-neutral-300 text-pretty">
+              Divinus is led by a team with experience across strategy, technology,
+              finance, and community development. Full leadership profiles will be
+              published with the next site release.
+            </p>
           </div>
 
           {/* Placeholder leadership grid — image tiles, no fabricated names */}
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800">
+          <div className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800">
             {[1,2,3,4].map((i) => (
               <div key={i} className="group relative bg-neutral-950 aspect-[3/4] overflow-hidden">
                 <Image
@@ -307,13 +307,13 @@ export default function AboutPage() {
                   alt=""
                   fill
                   sizes="(min-width: 768px) 25vw, 50vw"
-                  className="duotone object-cover"
+                  className="duotone object-cover opacity-70 group-hover:opacity-90 transition-opacity"
                   aria-hidden="true"
                 />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/30" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/40" />
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-400">0{i} · Leadership</p>
-                  <p className="mt-3 text-base font-semibold tracking-tight text-neutral-300">To be announced</p>
+                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">{String(i).padStart(2, '0')} · Profile</p>
+                  <p className="mt-3 text-base font-semibold tracking-tight text-neutral-200">To be announced</p>
                 </div>
               </div>
             ))}

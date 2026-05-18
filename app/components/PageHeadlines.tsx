@@ -29,6 +29,14 @@ export default function PageHeadlines() {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
+    // Track everything we create so we can tear it down cleanly on unmount.
+    // Without this, ScrollTriggers and timelines from a previous page leak
+    // into the next, and a `gsap.from(p, { opacity: 0 })` from the old route
+    // can leave elements stuck invisible after a back-nav.
+    const triggers: ScrollTrigger[] = [];
+    const tweens: gsap.core.Tween[] = [];
+    const timelines: gsap.core.Timeline[] = [];
+
     const eou = 'expo.out';
     const bodySel =
       ':scope p:not([data-anim="eyebrow"]):not([data-anim-skip]),' +
@@ -48,6 +56,7 @@ export default function PageHeadlines() {
       if (isAboveFold) {
         const eyebrow = section.querySelector<HTMLElement>('[data-anim="eyebrow"]');
         const tl = gsap.timeline({ defaults: { ease: eou } });
+        timelines.push(tl);
         if (eyebrow) tl.from(eyebrow, { opacity: 0, y: 20, duration: 0.7 }, 0.05);
         if (lines.length) tl.from(lines, { yPercent: 110, duration: 1.15, stagger: 0.12 }, 0.2);
         if (body.length) tl.from(body, { opacity: 0, y: 18, duration: 0.8, stagger: 0.06 }, 0.9);
@@ -55,8 +64,6 @@ export default function PageHeadlines() {
       }
 
       if (isPinReveal && lines.length) {
-        // Pin the section for ~1 viewport while scroll scrubs the line reveal.
-        // Eyebrow gets a small parallax push so the moment feels weighted.
         const eyebrow = section.querySelector<HTMLElement>('[data-anim="eyebrow"]');
         const tl = gsap.timeline({
           defaults: { ease: 'none' },
@@ -70,13 +77,15 @@ export default function PageHeadlines() {
             anticipatePin: 1,
           },
         });
+        timelines.push(tl);
+        if (tl.scrollTrigger) triggers.push(tl.scrollTrigger);
         if (eyebrow) tl.fromTo(eyebrow, { y: 0 }, { y: -40 }, 0);
         tl.from(lines, { yPercent: 110, stagger: 0.25, duration: 1 }, 0);
         return;
       }
 
       if (lines.length) {
-        gsap.from(lines, {
+        const tween = gsap.from(lines, {
           yPercent: 110,
           duration: 1.1,
           ease: eou,
@@ -87,6 +96,8 @@ export default function PageHeadlines() {
             once: true,
           },
         });
+        tweens.push(tween);
+        if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
       }
     });
 
@@ -96,12 +107,13 @@ export default function PageHeadlines() {
     const ruleSections = sections.filter((s) => /\bborder-(t|y)\b/.test(s.className));
     ruleSections.forEach((s) => {
       s.setAttribute('data-rule', 'hidden');
-      ScrollTrigger.create({
+      const st = ScrollTrigger.create({
         trigger: s,
         start: 'top 92%',
         once: true,
         onEnter: () => s.setAttribute('data-rule', 'shown'),
       });
+      triggers.push(st);
     });
 
     // Body batch — applies to all data-fx="gsap" sections that are NOT
@@ -114,7 +126,7 @@ export default function PageHeadlines() {
 
     if (belowFoldBody.length) {
       gsap.set(belowFoldBody, { opacity: 0, y: 18 });
-      ScrollTrigger.batch(belowFoldBody, {
+      const batched = ScrollTrigger.batch(belowFoldBody, {
         start: 'top 88%',
         once: true,
         onEnter: (els) =>
@@ -127,7 +139,19 @@ export default function PageHeadlines() {
             overwrite: 'auto',
           }),
       });
+      batched.forEach((st) => triggers.push(st));
     }
+
+    return () => {
+      // Fast-forward animations to their END state before killing, so any
+      // half-played `gsap.from(...)` (which starts at opacity:0) lands on its
+      // natural visible state instead of leaving the element invisible. This
+      // is the difference between "user navigated away mid-animation and the
+      // hero is now blank on back-nav" and "everything works".
+      tweens.forEach((t) => { try { t.progress(1); } catch { /* tween already disposed */ } t.kill(); });
+      timelines.forEach((t) => { try { t.progress(1); } catch { /* timeline already disposed */ } t.kill(); });
+      triggers.forEach((t) => t.kill());
+    };
   }, []);
 
   return null;

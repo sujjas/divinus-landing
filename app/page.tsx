@@ -6,6 +6,12 @@ import BorderGlow from './components/BorderGlow';
 import Aurora from './components/Aurora';
 import HeroGlobe from './components/HeroGlobe';
 
+export const metadata = {
+  title: 'Divinus Investment Group — Capital. Intelligence. Community.',
+  description:
+    'Divinus Investment Group is a multi-division group company building the infrastructure of growth — in organisations, in markets, and in people. One Group. Seven Divisions. One Direction.',
+};
+
 const DIVISIONS = [
   { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     img: 'https://picsum.photos/seed/divinus-div-ai/720/900' },
   { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          img: 'https://picsum.photos/seed/divinus-div-advisory/720/900' },
@@ -42,12 +48,12 @@ export default function Home() {
         <HeroGlobe />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24 lg:pt-32 lg:pb-32">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">
-            Divinus Investment Group · Global ambition, African conviction
+            Divinus Investment Group · Global focus, African conviction
           </p>
 
           <h1 data-anim="headline" className="mt-8 max-w-[14ch] text-[clamp(44px,7.4vw,116px)] font-bold display-tight text-neutral-50 text-balance">
             <span data-anim-line className="block">Capital. Intelligence. Community.</span>
-            <span data-anim-line className="block text-neutral-500">This is Divinus.</span>
+            <span data-anim-line className="block text-neutral-500 text-[clamp(22px,3.2vw,48px)] mt-3 tracking-tight">This is Divinus.</span>
           </h1>
 
           <div className="mt-14 grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">

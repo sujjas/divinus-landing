@@ -185,10 +185,45 @@ export default function ParticleField({
     const ro = new ResizeObserver(resize);
     ro.observe(el);
     resize();
-    raf = requestAnimationFrame(loop);
+
+    // Only run the rAF loop while the section is in (or near) the viewport.
+    // Saves a lot of CPU on weaker hardware — multiple ParticleFields can
+    // exist on one page (CTAs across the site), and they shouldn't burn
+    // battery when they're scrolled off-screen.
+    let visible = false;
+    const start = () => {
+      if (visible) return;
+      visible = true;
+      raf = requestAnimationFrame(loop);
+    };
+    const stop = () => {
+      if (!visible) return;
+      visible = false;
+      cancelAnimationFrame(raf);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) start();
+          else stop();
+        }
+      },
+      { rootMargin: '200px 0px' },
+    );
+    io.observe(el);
+
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else if (el.getBoundingClientRect().top < window.innerHeight && el.getBoundingClientRect().bottom > 0) {
+        start();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
 
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
+      io.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
       el.removeEventListener('pointermove', onMove);
       el.removeEventListener('pointerleave', onLeave);
       ro.disconnect();

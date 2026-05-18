@@ -41,24 +41,22 @@ export default function HomeAnimations() {
         const sub = hero.querySelector('[data-anim="sub"]');
         const ctas = hero.querySelectorAll('[data-anim="cta"] > *');
         const triplet = hero.querySelectorAll('[data-anim="triplet"] > div');
-        const voiceStrip = hero.querySelector('[data-anim="voice"]');
-        const voiceItems = hero.querySelectorAll('[data-anim="voice"] > div > *');
 
-        gsap.set([eyebrow, sub], { opacity: 0, y: 24 });
-        gsap.set(headlineLines, { opacity: 0, y: 48, scale: 0.985 });
-        gsap.set(ctas, { opacity: 0, y: 18 });
-        gsap.set(triplet, { opacity: 0, y: 24 });
-        gsap.set(voiceStrip, { opacity: 0, x: -32 });
-        gsap.set(voiceItems, { opacity: 0, y: 10 });
+        const initial: { el: Element | null; from: gsap.TweenVars }[] = [
+          { el: eyebrow, from: { opacity: 0, y: 24 } },
+          { el: sub,     from: { opacity: 0, y: 24 } },
+        ];
+        initial.forEach(({ el, from }) => { if (el) gsap.set(el, from); });
+        if (headlineLines.length) gsap.set(headlineLines, { opacity: 0, y: 48, scale: 0.985 });
+        if (ctas.length)          gsap.set(ctas,          { opacity: 0, y: 18 });
+        if (triplet.length)       gsap.set(triplet,       { opacity: 0, y: 24 });
 
         const tl = gsap.timeline({ defaults: { ease: eou } });
-        tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.7 }, 0.05)
-          .to(headlineLines, { opacity: 1, y: 0, scale: 1, duration: 1.1, stagger: 0.12 }, 0.15)
-          .to(sub, { opacity: 1, y: 0, duration: 0.8 }, 0.55)
-          .to(ctas, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.7)
-          .to(triplet, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.85)
-          .to(voiceStrip, { opacity: 1, x: 0, duration: 0.7 }, 1.0)
-          .to(voiceItems, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06 }, 1.05);
+        if (eyebrow)               tl.to(eyebrow,       { opacity: 1, y: 0, duration: 0.7 }, 0.05);
+        if (headlineLines.length)  tl.to(headlineLines, { opacity: 1, y: 0, scale: 1, duration: 1.1, stagger: 0.12 }, 0.15);
+        if (sub)                   tl.to(sub,           { opacity: 1, y: 0, duration: 0.8 }, 0.55);
+        if (ctas.length)           tl.to(ctas,          { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.7);
+        if (triplet.length)        tl.to(triplet,       { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.85);
       }
 
       // ── GROUP OVERVIEW — pinned-feel reveal of the three lines ────
@@ -66,47 +64,46 @@ export default function HomeAnimations() {
       if (group) {
         const lines = group.querySelectorAll('[data-anim="group-line"]');
         const body = group.querySelectorAll('[data-anim="group-body"] > *');
-        gsap.set(lines, { opacity: 0, y: 36 });
-        gsap.set(body, { opacity: 0, y: 16 });
-
-        gsap.to(lines, {
-          opacity: 1, y: 0, duration: 0.9, ease: eou, stagger: 0.14,
-          scrollTrigger: {
-            trigger: group,
-            start: 'top 78%',
-            once: true,
-          },
-        });
-        gsap.to(body, {
-          opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.1,
-          scrollTrigger: {
-            trigger: group,
-            start: 'top 70%',
-            once: true,
-          },
-        });
+        if (lines.length) {
+          gsap.set(lines, { opacity: 0, y: 36 });
+          gsap.to(lines, {
+            opacity: 1, y: 0, duration: 0.9, ease: eou, stagger: 0.14,
+            scrollTrigger: { trigger: group, start: 'top 78%', once: true },
+          });
+        }
+        if (body.length) {
+          gsap.set(body, { opacity: 0, y: 16 });
+          gsap.to(body, {
+            opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.1,
+            scrollTrigger: { trigger: group, start: 'top 70%', once: true },
+          });
+        }
       }
 
       // ── SEVEN DIVISIONS rows — batched entrance ───────────────────
       const divisions = document.querySelector('[data-fx="gsap"][data-section="divisions"]');
       if (divisions) {
         const head = divisions.querySelectorAll('[data-anim="div-head"] > *');
-        gsap.set(head, { opacity: 0, y: 18 });
-        gsap.to(head, {
-          opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.08,
-          scrollTrigger: { trigger: divisions, start: 'top 80%', once: true },
-        });
+        if (head.length) {
+          gsap.set(head, { opacity: 0, y: 18 });
+          gsap.to(head, {
+            opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.08,
+            scrollTrigger: { trigger: divisions, start: 'top 80%', once: true },
+          });
+        }
 
         const rows = divisions.querySelectorAll('[data-anim="div-row"]');
-        gsap.set(rows, { opacity: 0, y: 28 });
-        ScrollTrigger.batch(Array.from(rows) as Element[], {
-          start: 'top 88%',
-          once: true,
-          interval: 0.08,
-          onEnter: (els) => {
-            gsap.to(els, { opacity: 1, y: 0, duration: 0.8, ease: eou, stagger: 0.09 });
-          },
-        });
+        if (rows.length) {
+          gsap.set(rows, { opacity: 0, y: 28 });
+          ScrollTrigger.batch(Array.from(rows) as Element[], {
+            start: 'top 88%',
+            once: true,
+            interval: 0.08,
+            onEnter: (els) => {
+              gsap.to(els, { opacity: 1, y: 0, duration: 0.8, ease: eou, stagger: 0.09 });
+            },
+          });
+        }
       }
 
       // ── COMMUNITIES — two cards drop in side-by-side ──────────────
@@ -114,16 +111,20 @@ export default function HomeAnimations() {
       if (communities) {
         const head = communities.querySelectorAll('[data-anim="comm-head"] > *');
         const cards = communities.querySelectorAll('[data-anim="comm-card"]');
-        gsap.set(head, { opacity: 0, y: 22 });
-        gsap.set(cards, { opacity: 0, y: 36, scale: 0.985 });
-        gsap.to(head, {
-          opacity: 1, y: 0, duration: 0.8, ease: eou, stagger: 0.08,
-          scrollTrigger: { trigger: communities, start: 'top 78%', once: true },
-        });
-        gsap.to(cards, {
-          opacity: 1, y: 0, scale: 1, duration: 0.9, ease: eou, stagger: 0.14,
-          scrollTrigger: { trigger: communities, start: 'top 70%', once: true },
-        });
+        if (head.length) {
+          gsap.set(head, { opacity: 0, y: 22 });
+          gsap.to(head, {
+            opacity: 1, y: 0, duration: 0.8, ease: eou, stagger: 0.08,
+            scrollTrigger: { trigger: communities, start: 'top 78%', once: true },
+          });
+        }
+        if (cards.length) {
+          gsap.set(cards, { opacity: 0, y: 36, scale: 0.985 });
+          gsap.to(cards, {
+            opacity: 1, y: 0, scale: 1, duration: 0.9, ease: eou, stagger: 0.14,
+            scrollTrigger: { trigger: communities, start: 'top 70%', once: true },
+          });
+        }
       }
 
       // ── FIND YOUR PLACE — rows slide in left → right ──────────────
@@ -131,16 +132,20 @@ export default function HomeAnimations() {
       if (routing) {
         const head = routing.querySelectorAll('[data-anim="route-head"] > *');
         const rows = routing.querySelectorAll('[data-anim="route-row"]');
-        gsap.set(head, { opacity: 0, y: 18 });
-        gsap.set(rows, { opacity: 0, x: -28 });
-        gsap.to(head, {
-          opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.08,
-          scrollTrigger: { trigger: routing, start: 'top 78%', once: true },
-        });
-        gsap.to(rows, {
-          opacity: 1, x: 0, duration: 0.7, ease: eou, stagger: 0.08,
-          scrollTrigger: { trigger: routing, start: 'top 80%', once: true },
-        });
+        if (head.length) {
+          gsap.set(head, { opacity: 0, y: 18 });
+          gsap.to(head, {
+            opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.08,
+            scrollTrigger: { trigger: routing, start: 'top 78%', once: true },
+          });
+        }
+        if (rows.length) {
+          gsap.set(rows, { opacity: 0, x: -28 });
+          gsap.to(rows, {
+            opacity: 1, x: 0, duration: 0.7, ease: eou, stagger: 0.08,
+            scrollTrigger: { trigger: routing, start: 'top 80%', once: true },
+          });
+        }
       }
 
       // ── CTA BANNER — assertive scale-in ───────────────────────────
@@ -148,16 +153,20 @@ export default function HomeAnimations() {
       if (cta) {
         const lines = cta.querySelectorAll('[data-anim="cta-headline"] [data-anim-line]');
         const rest = cta.querySelectorAll('[data-anim="cta-body"] > *');
-        gsap.set(lines, { opacity: 0, y: 40, scale: 0.97 });
-        gsap.set(rest, { opacity: 0, y: 18 });
-        gsap.to(lines, {
-          opacity: 1, y: 0, scale: 1, duration: 1.0, ease: eou, stagger: 0.12,
-          scrollTrigger: { trigger: cta, start: 'top 75%', once: true },
-        });
-        gsap.to(rest, {
-          opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.1,
-          scrollTrigger: { trigger: cta, start: 'top 70%', once: true },
-        });
+        if (lines.length) {
+          gsap.set(lines, { opacity: 0, y: 40, scale: 0.97 });
+          gsap.to(lines, {
+            opacity: 1, y: 0, scale: 1, duration: 1.0, ease: eou, stagger: 0.12,
+            scrollTrigger: { trigger: cta, start: 'top 75%', once: true },
+          });
+        }
+        if (rest.length) {
+          gsap.set(rest, { opacity: 0, y: 18 });
+          gsap.to(rest, {
+            opacity: 1, y: 0, duration: 0.7, ease: eou, stagger: 0.1,
+            scrollTrigger: { trigger: cta, start: 'top 70%', once: true },
+          });
+        }
       }
 
       // ── DIVISIONS — cursor-tracking image preview ────────────────

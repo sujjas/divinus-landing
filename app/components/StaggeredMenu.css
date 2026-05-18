@@ -265,7 +265,22 @@
   transform-origin: 50% 100%;
 }
 
-.sm-panel-item:hover { color: #a3a3a3; }
+/* Sibling-fade pattern (Sonner): hovered item stays at full white; the
+   list demotes its non-hovered peers so the focused affordance is the
+   loudest thing in the column. Hovering anywhere on the list is fine —
+   the rule keys off the parent. */
+.sm-panel-list .sm-panel-item { transition: color 0.2s ease, opacity 0.2s ease; }
+.sm-panel-list:hover .sm-panel-item { opacity: 0.45; }
+.sm-panel-list:hover .sm-panel-item:hover { opacity: 1; }
+.sm-panel-list:focus-within .sm-panel-item { opacity: 0.45; }
+.sm-panel-list:focus-within .sm-panel-item:focus-visible { opacity: 1; }
+
+.sm-panel-item:focus-visible {
+  outline: 2px solid var(--sm-accent, #C9A84C);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
 .sm-panel-item[aria-current="page"] { color: var(--sm-accent, #C9A84C); }
 
 .sm-panel-list[data-numbering] { counter-reset: smItem; }

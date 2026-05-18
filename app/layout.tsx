@@ -8,6 +8,7 @@ import SiteMenu from './components/SiteMenu';
 import Footer from './components/Footer';
 import AgentationDev from './components/AgentationDev';
 import SmoothScroll from './components/SmoothScroll';
+import WhatsAppButton from './components/WhatsAppButton';
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteMenu />
         {children}
         <Footer />
+        <WhatsAppButton />
         <EntranceFx />
         <AgentationDev />
       </body>
