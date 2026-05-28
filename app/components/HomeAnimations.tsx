@@ -57,6 +57,66 @@ export default function HomeAnimations() {
         if (sub)                   tl.to(sub,           { opacity: 1, y: 0, duration: 0.8 }, 0.55);
         if (ctas.length)           tl.to(ctas,          { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.7);
         if (triplet.length)        tl.to(triplet,       { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.85);
+
+        // ── HERO GLOBE DOCK — scrub the globe from its right-side hero spot
+        // down to a small bottom-left corner badge as the hero scrolls out.
+        // Mirrors the WhatsApp button's 32px corner margin (bottom-8/right-8).
+        const globe = document.querySelector<HTMLElement>('[data-globe-root]');
+        if (globe) {
+          const MARGIN = 32; // matches WhatsApp's bottom-8/right-8
+          // The inner globe sits inside a 100vh-tall, 60vw-wide wrapper with
+          // its own size + right-offset. Compute x/y translations analytically
+          // so the visible globe's bottom-left lands at (MARGIN, vh - MARGIN),
+          // independent of viewport and breakpoint.
+          const dockParams = () => {
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            const mobile = vw < 1024;
+            return {
+              vw, vh, mobile,
+              scale: mobile ? 0.38 : 0.22,
+              wrapperW: Math.min(0.6 * vw, 820),
+              wrapperH: vh,
+              innerSize: Math.min(1100, (vh * (mobile ? 32 : 120)) / 100),
+              rightOffsetCss: mobile ? -0.38 : -0.06,
+              yOffsetPct: 3,
+            };
+          };
+          const computeX = () => {
+            const p = dockParams();
+            const innerRightLocal = p.wrapperW * (1 - p.rightOffsetCss);
+            const innerLeftLocal = innerRightLocal - p.innerSize;
+            const originX = p.vw - p.wrapperW;
+            const innerLeftPre = originX + innerLeftLocal;
+            const scaledInnerLeft = originX + p.scale * (innerLeftPre - originX);
+            return MARGIN - scaledInnerLeft;
+          };
+          const computeY = () => {
+            const p = dockParams();
+            const innerBottomLocal = 0.5 * p.wrapperH + (0.5 + p.yOffsetPct / 100) * p.innerSize;
+            const scaledInnerBottom = p.wrapperH + p.scale * (innerBottomLocal - p.wrapperH);
+            return p.vh - MARGIN - scaledInnerBottom;
+          };
+          gsap.to(globe, {
+            scale: () => dockParams().scale,
+            transformOrigin: '0% 100%',
+            x: computeX,
+            y: computeY,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: hero,
+              start: 'bottom 80%',
+              end: 'bottom -10%',
+              scrub: 0.6,
+              invalidateOnRefresh: true,
+              // Behind hero content while at rest; lifts above page content as
+              // soon as the user starts scrolling out of hero.
+              onEnter:     () => gsap.set(globe, { zIndex: 30 }),
+              onEnterBack: () => gsap.set(globe, { zIndex: 30 }),
+              onLeaveBack: () => gsap.set(globe, { zIndex: 0 }),
+            },
+          });
+        }
       }
 
       // ── GROUP OVERVIEW — pinned-feel reveal of the three lines ────

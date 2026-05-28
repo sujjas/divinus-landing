@@ -33,7 +33,7 @@ type Division = {
 
 const DIVISIONS: Division[] = [
   {
-    num: '01', id: 'ai', eyebrow: 'Intelligence', img: 'https://picsum.photos/seed/divinus-divisions-ai/1200/900',
+    num: '01', id: 'ai', eyebrow: 'Intelligence', img: '/divisions/ai.jpg',
     name: 'Divinus AI · Vision Africa',
     tagline: 'African AI capability — built, taught, and deployed where it counts.',
     intro:
@@ -52,7 +52,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '02', id: 'advisory', eyebrow: 'Strategy', img: 'https://picsum.photos/seed/divinus-divisions-advisory/1200/900',
+    num: '02', id: 'advisory', eyebrow: 'Strategy', img: '/divisions/advisory.jpg',
     name: 'Divinus Advisory',
     tagline: 'Where Strategy Meets Substance.',
     intro:
@@ -72,7 +72,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '03', id: 'exchange', eyebrow: 'Community', img: 'https://picsum.photos/seed/divinus-divisions-exchange/1200/900',
+    num: '03', id: 'exchange', eyebrow: 'Community', img: '/divisions/exchange.jpg',
     name: 'Divinus Exchange',
     tagline: 'Where Substance Meets Community.',
     intro:
@@ -86,7 +86,7 @@ const DIVISIONS: Division[] = [
     ],
   },
   {
-    num: '04', id: 'labs', eyebrow: 'Products', img: 'https://picsum.photos/seed/divinus-divisions-labs/1200/900',
+    num: '04', id: 'labs', eyebrow: 'Products', img: '/divisions/labs.jpg',
     name: 'Divinus Labs',
     intro:
       'Labs builds software products and digital systems engineered for African markets — built to be owned, not rented; built to scale, not to demo.',
@@ -104,7 +104,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '05', id: 'capital', eyebrow: 'Education', img: 'https://picsum.photos/seed/divinus-divisions-capital/1200/900',
+    num: '05', id: 'capital', eyebrow: 'Education', img: '/divisions/capital.jpg',
     name: 'Divinus Capital',
     tagline: 'Education Before Action.',
     intro:
@@ -118,7 +118,7 @@ const DIVISIONS: Division[] = [
     ],
   },
   {
-    num: '06', id: 'partners', eyebrow: 'Alliances', img: 'https://picsum.photos/seed/divinus-divisions-partners/1200/900',
+    num: '06', id: 'partners', eyebrow: 'Alliances', img: '/divisions/partners.jpg',
     name: 'Strategic Partners',
     tagline: 'One Group. One Standard.',
     intro:
@@ -137,7 +137,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '07', id: 'foundation', eyebrow: 'Impact', img: 'https://picsum.photos/seed/divinus-divisions-foundation/1200/900',
+    num: '07', id: 'foundation', eyebrow: 'Impact', img: '/divisions/foundation.jpg',
     name: 'The Divinus Foundation',
     intro:
       'The Foundation is where conviction meets contribution. It is the philanthropic arm of the group — funded by the group, operated independently, accountable to mission first.',
@@ -163,7 +163,7 @@ export default function DivisionsPage() {
       {/* PAGE HEADER — full-bleed cinematic */}
       <section data-fx="gsap" data-section="div-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="div-title">
         <Image
-          src="https://picsum.photos/seed/divinus-divisions-hero-full/2400/1600"
+          src="/divisions/hero.jpg"
           alt=""
           fill
           sizes="100vw"
@@ -321,7 +321,7 @@ export default function DivisionsPage() {
       {/* CTA */}
       <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
         <Image
-          src="https://picsum.photos/seed/divinus-divisions-cta/2400/1200"
+          src="/divisions/hero.jpg"
           alt=""
           fill
           sizes="100vw"

@@ -55,12 +55,12 @@ export default function EventsPage() {
       {/* HEADER */}
       <section data-fx="gsap" data-section="events-header" data-above-fold className="group relative overflow-hidden min-h-[78vh] flex items-end" aria-labelledby="events-title">
         <Image
-          src="https://picsum.photos/seed/divinus-events-hero/2400/1600"
+          src="/events.jpg"
           alt=""
           fill
           sizes="100vw"
           priority
-          className="duotone object-cover"
+          className="duotone object-cover object-bottom"
           aria-hidden="true"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
@@ -145,11 +145,11 @@ export default function EventsPage() {
       {/* CTA */}
       <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
         <Image
-          src="https://picsum.photos/seed/divinus-events-cta/2400/1200"
+          src="/events.jpg"
           alt=""
           fill
           sizes="100vw"
-          className="duotone object-cover opacity-55"
+          className="duotone object-cover object-bottom opacity-55"
           aria-hidden="true"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />

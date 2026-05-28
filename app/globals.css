@@ -166,22 +166,17 @@ input, textarea, select, [contenteditable="true"] {
 .text-balance { text-wrap: balance; }
 .text-pretty { text-wrap: pretty; }
 
-/* primary cta arrow pulse */
-@keyframes cta-arrow-idle {
-  0%, 100% { transform: translateX(0); }
-  50%      { transform: translateX(3px); }
-}
+/* primary cta arrow — smooth hover slide */
 .cta-arrow {
-  animation: cta-arrow-idle 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform: translateX(0);
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 a:hover .cta-arrow, button:hover .cta-arrow {
-  animation: none;
   transform: translateX(6px);
-  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 @media (prefers-reduced-motion: reduce) {
-  .cta-arrow { animation: none; }
+  .cta-arrow { transition: none; }
 }
 
 /* animated section top-rule: hairline draws in left to right on enter */

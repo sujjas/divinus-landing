@@ -41,7 +41,7 @@ export default function BlogPage() {
       {/* HEADER */}
       <section data-fx="gsap" data-section="blog-header" data-above-fold className="group relative overflow-hidden min-h-[78vh] flex items-end" aria-labelledby="blog-title">
         <Image
-          src="https://picsum.photos/seed/divinus-blog-hero/2400/1600"
+          src="/insights-hero.jpg"
           alt=""
           fill
           sizes="100vw"
@@ -181,7 +181,7 @@ export default function BlogPage() {
       {/* CTA */}
       <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
         <Image
-          src="https://picsum.photos/seed/divinus-blog-cta/2400/1200"
+          src="/blog-cta.jpg"
           alt=""
           fill
           sizes="100vw"

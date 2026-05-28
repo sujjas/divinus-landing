@@ -3,7 +3,6 @@ import Image from 'next/image';
 import ParticleField from '../components/ParticleField';
 import PageHeadlines from '../components/PageHeadlines';
 import ShrinkOnScroll from '../components/ShrinkOnScroll';
-import ExpandOnScroll from '../components/ExpandOnScroll';
 
 export const metadata = {
   title: 'Communities — Divinus Exchange',
@@ -43,7 +42,7 @@ const COMMUNITIES: Community[] = [
       'Men who would rather sharpen than perform',
     ],
     route: '/contact?route=men-of-substance',
-    img: 'https://picsum.photos/seed/divinus-mos-large/1400/1000',
+    img: '/communities/men-of-substance.jpg',
   },
   {
     id: 'genesis-woman',
@@ -65,17 +64,17 @@ const COMMUNITIES: Community[] = [
       'Women who want a circle, not an audience',
     ],
     route: '/contact?route=genesis-woman',
-    img: 'https://picsum.photos/seed/divinus-gw-large/1400/1000',
+    img: '/communities/genesis-woman.jpg',
   },
 ];
 
 const MEMBER_EXPERIENCE = [
-  { title: 'Programmes',             body: 'Structured cohort programmes built around the four pillars of each community — leadership, financial intelligence, brotherhood/sisterhood, and personal standard.', img: 'https://picsum.photos/seed/divinus-exp-programmes/800/600' },
-  { title: 'Convenings',             body: 'In-person retreats, dinners, and forums where the work happens face-to-face and the relationships compound.',                                            img: 'https://picsum.photos/seed/divinus-exp-convenings/800/600' },
-  { title: 'Mentorship',             body: 'Curated access to operators, leaders, and elders — not as panellists, but as relationships you can return to.',                                        img: 'https://picsum.photos/seed/divinus-exp-mentorship/800/600' },
-  { title: 'Capital education',      body: 'Priority access to Divinus Capital programmes — markets, personal finance, and capital design.',                                                       img: 'https://picsum.photos/seed/divinus-exp-capital/800/600' },
-  { title: 'Cross-community access', body: 'Members of one community meet the other inside Divinus Exchange — partners, peers, and counterparts in the work of building.',                         img: 'https://picsum.photos/seed/divinus-exp-cross/800/600' },
-  { title: 'Continuity',             body: 'Membership is built to last decades, not seasons. The standard does not graduate.',                                                                    img: 'https://picsum.photos/seed/divinus-exp-continuity/800/600' },
+  { title: 'Programmes',             body: 'Structured cohort programmes built around the four pillars of each community — leadership, financial intelligence, brotherhood/sisterhood, and personal standard.', icon: 'fa-solid fa-list-check' },
+  { title: 'Convenings',             body: 'In-person retreats, dinners, and forums where the work happens face-to-face and the relationships compound.',                                            icon: 'fa-solid fa-users' },
+  { title: 'Mentorship',             body: 'Curated access to operators, leaders, and elders — not as panellists, but as relationships you can return to.',                                        icon: 'fa-solid fa-user-graduate' },
+  { title: 'Capital education',      body: 'Priority access to Divinus Capital programmes — markets, personal finance, and capital design.',                                                       icon: 'fa-solid fa-chart-line' },
+  { title: 'Cross-community access', body: 'Members of one community meet the other inside Divinus Exchange — partners, peers, and counterparts in the work of building.',                         icon: 'fa-solid fa-people-arrows' },
+  { title: 'Continuity',             body: 'Membership is built to last decades, not seasons. The standard does not graduate.',                                                                    icon: 'fa-solid fa-infinity' },
 ];
 
 export default function CommunitiesPage() {
@@ -86,7 +85,7 @@ export default function CommunitiesPage() {
       {/* PAGE HEADER — full-bleed cinematic */}
       <section data-fx="gsap" data-section="comm-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="comm-title">
         <Image
-          src="https://picsum.photos/seed/divinus-comm-hero-full/2400/1600"
+          src="/communities/hero.jpg"
           alt=""
           fill
           sizes="100vw"
@@ -115,7 +114,7 @@ export default function CommunitiesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <ShrinkOnScroll className="group relative aspect-[21/8] overflow-hidden">
             <Image
-              src="https://picsum.photos/seed/divinus-platform-wide/2400/914"
+              src="/divisions/exchange.jpg"
               alt="The Exchange"
               fill
               sizes="100vw"
@@ -255,21 +254,15 @@ export default function CommunitiesPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-800 border border-neutral-800">
             {MEMBER_EXPERIENCE.map((m, i) => (
-              <article key={m.title} className="group relative bg-neutral-950 p-8 sm:p-10 overflow-hidden min-h-[300px]">
-                <Image
-                  src={m.img}
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="duotone object-cover opacity-65"
-                  aria-hidden="true"
-                />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/85 to-neutral-950/50 transition-opacity duration-500 group-hover:opacity-70" />
-                <div className="relative">
+              <article key={m.title} className="group relative bg-neutral-950 p-8 sm:p-10 min-h-[300px] flex flex-col justify-between">
+                <div className="flex items-start justify-between">
+                  <i className={`${m.icon} text-3xl text-neutral-400`} aria-hidden="true" />
                   <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
                     {String(i + 1).padStart(2, '0')}
                   </p>
-                  <h3 className="mt-5 text-xl sm:text-2xl font-bold tracking-tight text-neutral-50">
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-50">
                     {m.title}
                   </h3>
                   <p className="mt-4 text-base sm:text-sm leading-[1.7] text-neutral-300 text-pretty">{m.body}</p>
@@ -283,16 +276,7 @@ export default function CommunitiesPage() {
       {/* CROSS-LINK TO CAPITAL */}
       <section data-fx="gsap" data-section="capital-bridge" className="py-20 sm:py-28" aria-labelledby="capital-link">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <ExpandOnScroll className="group relative aspect-[16/6] overflow-hidden mb-14">
-            <Image
-              src="https://picsum.photos/seed/divinus-comm-capital/1600/600"
-              alt="Bridge to Divinus Capital"
-              fill
-              sizes="100vw"
-              className="duotone object-cover"
-            />
-          </ExpandOnScroll>
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end border-t border-neutral-800 pt-16 sm:pt-20">
+          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end pt-4">
             <div className="lg:col-span-7">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">A bridge to Capital</p>
               <h2 id="capital-link" className="mt-6 text-[clamp(28px,4vw,48px)] font-bold display-tight text-neutral-50 text-balance">
@@ -323,11 +307,11 @@ export default function CommunitiesPage() {
       {/* CTA */}
       <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
         <Image
-          src="https://picsum.photos/seed/divinus-comm-cta/2400/1200"
+          src="/communities/hero.jpg"
           alt=""
           fill
           sizes="100vw"
-          className="duotone object-cover opacity-55"
+          className="duotone object-cover object-top opacity-55"
           aria-hidden="true"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />

@@ -13,21 +13,21 @@ export const metadata = {
 };
 
 const DIVISIONS = [
-  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     img: 'https://picsum.photos/seed/divinus-div-ai/720/900' },
-  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          img: 'https://picsum.photos/seed/divinus-div-advisory/720/900' },
-  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     line: 'The platform where substance meets community — Men of Substance and Genesis Woman.', img: 'https://picsum.photos/seed/divinus-div-exchange/720/900' },
-  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      line: 'Software products and digital systems engineered for African markets.',     img: 'https://picsum.photos/seed/divinus-div-labs/720/900' },
-  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     line: 'Education Before Action. This is not a signals group — it is a school.',    img: 'https://picsum.photos/seed/divinus-div-capital/720/900' },
-  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     line: 'Long-horizon partnerships with the institutions building the continent.',   img: 'https://picsum.photos/seed/divinus-div-partners/720/900' },
-  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        line: 'Where conviction meets contribution — the philanthropic arm of the group.', img: 'https://picsum.photos/seed/divinus-div-foundation/720/900' },
+  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     img: '/divisions/ai.jpg' },
+  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          img: '/divisions/advisory.jpg' },
+  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     line: 'The platform where substance meets community — Men of Substance and Genesis Woman.', img: '/divisions/exchange.jpg' },
+  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      line: 'Software products and digital systems engineered for African markets.',     img: '/divisions/labs.jpg' },
+  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     line: 'Education Before Action. This is not a signals group — it is a school.',    img: '/divisions/capital.jpg' },
+  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     line: 'Long-horizon partnerships with the institutions building the continent.',   img: '/divisions/partners.jpg' },
+  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        line: 'Where conviction meets contribution — the philanthropic arm of the group.', img: '/divisions/foundation.jpg' },
 ];
 
 const ROUTES = [
-  { intent: 'Build or scale a business',  to: '/divisions#advisory',  cta: 'Advisory' },
-  { intent: 'Join a community',           to: '/communities',         cta: 'Communities' },
-  { intent: 'Partner with us',            to: '/divisions#partners',  cta: 'Partners' },
-  { intent: 'Support a programme',        to: '/divisions#foundation',cta: 'Foundation' },
-  { intent: 'Talk to the team',           to: '/contact',             cta: 'Contact' },
+  { intent: 'Build or scale a business',  to: '/divisions#advisory',  cta: 'Advisory',    img: '/routes/build-scale.jpg' },
+  { intent: 'Join a community',           to: '/communities',         cta: 'Communities', img: '/divisions/exchange.jpg' },
+  { intent: 'Partner with us',            to: '/divisions#partners',  cta: 'Partners',    img: '/divisions/partners.jpg' },
+  { intent: 'Support a programme',        to: '/divisions#foundation',cta: 'Foundation',  img: '/divisions/foundation.jpg' },
+  { intent: 'Talk to the team',           to: '/contact',             cta: 'Contact',     img: '/routes/talk-to-team.jpg' },
 ];
 
 export default function Home() {
@@ -63,7 +63,7 @@ export default function Home() {
                 in organisations, in markets, and in people.
               </p>
 
-              <div data-anim="cta" className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-3">
+              <div data-anim="cta" className="mt-8 flex flex-col items-start gap-y-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-3">
                 <Link
                   href="/divisions"
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-50 px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 transition"
@@ -83,7 +83,7 @@ export default function Home() {
               </div>
             </div>
 
-            <dl data-anim="triplet" className="lg:col-span-5 grid grid-cols-3 gap-y-6 gap-x-6 text-sm border-t border-neutral-800 pt-8">
+            <dl data-anim="triplet" className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-y-6 gap-x-6 text-sm border-t border-neutral-800 pt-8">
               <div>
                 <dt className="text-xs font-medium text-neutral-500 mb-1.5">Group</dt>
                 <dd className="text-lg font-semibold tracking-tight">One</dd>
@@ -251,7 +251,7 @@ export default function Home() {
                 <div className="overflow-hidden rounded-[12px]">
                   <div className="relative aspect-[16/10] w-full">
                     <Image
-                      src="https://picsum.photos/seed/divinus-mos/1600/1000"
+                      src="/communities/men-of-substance.jpg"
                       alt="Men of Substance — community gathering"
                       fill
                       sizes="(min-width: 1024px) 40vw, 100vw"
@@ -292,7 +292,7 @@ export default function Home() {
                 <div className="overflow-hidden rounded-[12px]">
                   <div className="relative aspect-[16/10] w-full">
                     <Image
-                      src="https://picsum.photos/seed/divinus-gw/1600/1000"
+                      src="/communities/genesis-woman.jpg"
                       alt="Genesis Woman — community gathering"
                       fill
                       sizes="(min-width: 1024px) 40vw, 100vw"
@@ -341,7 +341,7 @@ export default function Home() {
                 className="group relative bg-neutral-950 p-8 lg:p-10 flex flex-col justify-between min-h-[260px] overflow-hidden transition"
               >
                 <Image
-                  src={`https://picsum.photos/seed/divinus-route-${r.cta.toLowerCase()}/1200/800`}
+                  src={r.img}
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
@@ -371,11 +371,11 @@ export default function Home() {
       {/* CTA BANNER */}
       <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50" aria-labelledby="cta-title">
         <Image
-          src="https://picsum.photos/seed/divinus-cta/2400/1200"
+          src="/next-step-v3.jpg"
           alt=""
           fill
           sizes="100vw"
-          className="duotone object-cover opacity-55"
+          className="duotone object-cover object-bottom opacity-55"
           aria-hidden="true"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />

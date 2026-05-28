@@ -24,8 +24,13 @@ const COUNTRIES_FEATURES: Feature[] =
 const BASE_ROTATE_SPEED = -2.6;
 const SIZE_VH = 120;
 const RIGHT_OFFSET_PCT = -6;
-const Y_OFFSET_PCT = 12;
+const Y_OFFSET_PCT = 3;
 const HEX_COLOR = '#575757';
+
+// Mobile (< lg) — sourced from the dev tuner.
+const MOBILE_SIZE_VH = 75;
+const MOBILE_RIGHT_OFFSET_PCT = -100;
+const MOBILE_Y_OFFSET_PCT = -3;
 
 /**
  * Hex polygon globe for the hero. Countries rendered as a low-resolution
@@ -35,11 +40,15 @@ const HEX_COLOR = '#575757';
  */
 export default function HeroGlobe() {
   const [size, setSize] = useState({ w: 560, h: 560 });
+  const [isMobile, setIsMobile] = useState(false);
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
 
   useEffect(() => {
     const compute = () => {
-      const w = Math.min(1100, (window.innerHeight * SIZE_VH) / 100);
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      const sizeVh = mobile ? MOBILE_SIZE_VH : SIZE_VH;
+      const w = Math.min(1100, (window.innerHeight * sizeVh) / 100);
       setSize({ w, h: w });
     };
     compute();
@@ -97,24 +106,29 @@ export default function HeroGlobe() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-y-0 right-0 hidden lg:block"
-      style={{ width: 'min(60vw, 820px)' }}
+      data-globe-root
+      className="pointer-events-none fixed inset-y-0 right-0 block z-0"
+      style={{ width: 'min(60vw, 820px)', willChange: 'transform' }}
     >
       <div className="relative h-full w-full">
         <div
           className="absolute"
           style={{
             top: '50%',
-            right: `${RIGHT_OFFSET_PCT}%`,
-            transform: `translateY(calc(-50% + ${Y_OFFSET_PCT}%))`,
-            width: `min(1100px, ${SIZE_VH}vh)`,
+            right: `${isMobile ? MOBILE_RIGHT_OFFSET_PCT : RIGHT_OFFSET_PCT}%`,
+            transform: `translateY(calc(-50% + ${isMobile ? MOBILE_Y_OFFSET_PCT : Y_OFFSET_PCT}%))`,
+            width: `min(1100px, ${isMobile ? MOBILE_SIZE_VH : SIZE_VH}vh)`,
             aspectRatio: '1 / 1',
             // Mask follows the globe's own bounds, not the wrapper's, so the
             // canvas can extend below the hero section without being clipped.
-            WebkitMaskImage:
-              'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 50%)',
-            maskImage:
-              'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 50%)',
+            // On mobile the globe is small + tucked off-screen right, so the
+            // fade mask would erase the visible sliver — drop it there.
+            WebkitMaskImage: isMobile
+              ? 'none'
+              : 'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 50%)',
+            maskImage: isMobile
+              ? 'none'
+              : 'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 50%)',
           }}
         >
           <Globe

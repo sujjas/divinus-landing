@@ -24,7 +24,7 @@ export default async function ContactPage({
       {/* PAGE HEADER — full-bleed cinematic */}
       <section data-fx="gsap" data-section="contact-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="contact-title">
         <Image
-          src="https://picsum.photos/seed/divinus-contact-hero-full/2400/1600"
+          src="/contact.jpg"
           alt=""
           fill
           sizes="100vw"
@@ -58,7 +58,7 @@ export default async function ContactPage({
       {/* SLA NOTE — locked verbatim */}
       <section data-fx="gsap" data-section="sla" className="group relative overflow-hidden border-t border-neutral-800 py-20 sm:py-28" aria-labelledby="sla-title">
         <Image
-          src="https://picsum.photos/seed/divinus-contact-sla/2400/1000"
+          src="/contact.jpg"
           alt=""
           fill
           sizes="100vw"
