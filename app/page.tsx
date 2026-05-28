@@ -193,6 +193,17 @@ export default function Home() {
                 data-preview-row={d.anchor}
                 className="group grid grid-cols-12 gap-x-6 gap-y-4 py-10 sm:py-12 border-b border-neutral-800"
               >
+                {/* Mobile-only image — desktop uses the cursor-preview overlay */}
+                <div className="sm:hidden col-span-12 relative aspect-[16/10] overflow-hidden rounded-xl">
+                  <Image
+                    src={d.img}
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    className="duotone object-cover"
+                    aria-hidden="true"
+                  />
+                </div>
                 <div className="col-span-12 sm:col-span-2">
                   <span className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
                     {d.num} / {d.tag}
