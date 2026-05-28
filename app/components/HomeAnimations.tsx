@@ -116,8 +116,8 @@ export default function HomeAnimations() {
               invalidateOnRefresh: true,
               // Behind hero content while at rest; lifts above page content as
               // soon as the user starts scrolling out of hero.
-              onEnter:     () => gsap.set(globe, { zIndex: 30 }),
-              onEnterBack: () => gsap.set(globe, { zIndex: 30 }),
+              onEnter:     () => gsap.set(globe, { zIndex: 200 }),
+              onEnterBack: () => gsap.set(globe, { zIndex: 200 }),
               onLeaveBack: () => gsap.set(globe, { zIndex: 0 }),
             },
           });

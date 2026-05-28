@@ -216,6 +216,10 @@ a:hover .cta-arrow, button:hover .cta-arrow {
 @media (prefers-reduced-motion: reduce) {
   .duotone { transition: none; }
 }
+/* Mobile: show images in colour — no hover affordance on touch */
+@media (max-width: 1023px) {
+  .duotone { filter: none; }
+}
 
 :root {
   --background: oklch(1 0 0);
