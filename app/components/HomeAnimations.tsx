@@ -22,6 +22,11 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
  * Below the fold each section gets a quick batch on its content as it
  * enters the viewport — never more than 600ms, never with bounce.
  */
+// Baked offsets for the docked globe (sourced from the dev tuner).
+const DOCK_X_OFF = 20;
+const DOCK_Y_OFF = -29;
+const DOCK_SCALE_MUL = 0.6;
+
 export default function HomeAnimations() {
   const root = useRef<HTMLDivElement>(null);
 
@@ -98,10 +103,10 @@ export default function HomeAnimations() {
             return p.vh - MARGIN - scaledInnerBottom;
           };
           gsap.to(globe, {
-            scale: () => dockParams().scale,
+            scale: () => dockParams().scale * DOCK_SCALE_MUL,
             transformOrigin: '0% 100%',
-            x: computeX,
-            y: computeY,
+            x: () => computeX() + DOCK_X_OFF,
+            y: () => computeY() + DOCK_Y_OFF,
             ease: 'none',
             scrollTrigger: {
               trigger: hero,
