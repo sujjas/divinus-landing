@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <span>{post.author}</span>
             </p>
           </div>
-          <h1 id="post-title" className="mt-6 text-[clamp(30px,4.6vw,68px)] font-bold display-tight text-neutral-50 text-balance leading-[1.1]">
+          <h1 id="post-title" className="mt-6 text-[clamp(30px,4.6vw,68px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.1]">
             {post.title}
           </h1>
           <p className="mt-6 max-w-2xl text-base sm:text-lg leading-[1.55] text-neutral-200 text-pretty">
@@ -178,7 +178,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mb-12">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">More writing</p>
-              <h2 id="related-title" className="mt-6 text-[clamp(28px,4vw,48px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="related-title" className="mt-6 text-[clamp(28px,4vw,48px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 Keep reading.
               </h2>
             </div>
@@ -204,7 +204,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Work with us</p>
-              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span className="block">Read it. Then</span>
                 <span className="block text-neutral-500">let&apos;s build.</span>
               </h2>

@@ -64,7 +64,7 @@ export default function AboutPage() {
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">About</p>
-          <h1 id="about-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-bold display-tight text-neutral-50 text-balance">
+          <h1 id="about-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">About Divinus</span></span>
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">Investment Group.</span></span>
           </h1>
@@ -82,7 +82,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-12 items-start">
             <div className="lg:col-span-5">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Who we are</p>
-              <h2 id="who-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="who-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">One organism.</span></span>
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Not a holding company.</span></span>
               </h2>
@@ -142,7 +142,7 @@ export default function AboutPage() {
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/55" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Mission</p>
-          <h2 id="mission-title" className="mt-8 max-w-[20ch] text-[clamp(40px,6.4vw,104px)] font-bold display-tight text-neutral-50 text-balance">
+          <h2 id="mission-title" className="mt-8 max-w-[20ch] text-[clamp(40px,6.4vw,104px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Build organisations.</span></span>
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Develop people.</span></span>
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">Create value that lasts.</span></span>
@@ -156,7 +156,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 mb-14 sm:mb-16">
             <div className="lg:col-span-6">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The architecture</p>
-              <h2 id="arch-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="arch-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Seven divisions.</span></span>
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">One mandate each.</span></span>
               </h2>
@@ -211,7 +211,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-2xl mb-14">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Values</p>
-            <h2 id="values-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-bold display-tight text-neutral-50 text-balance">
+            <h2 id="values-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
               <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Precision · Integrity ·</span></span>
               <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Ambition · Impact.</span></span>
             </h2>
@@ -241,7 +241,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10">
             <div className="lg:col-span-4">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Our story</p>
-              <h2 id="story-title" className="mt-6 text-[clamp(34px,5vw,56px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="story-title" className="mt-6 text-[clamp(34px,5vw,56px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Why we</span></span>
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">were built.</span></span>
               </h2>
@@ -287,7 +287,7 @@ export default function AboutPage() {
           {/* Intro — single block; eyebrow + tag, title + lede aligned to one column */}
           <div className="max-w-3xl">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Leadership</p>
-            <h2 id="leadership-title" className="mt-6 text-[clamp(36px,5.4vw,72px)] font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
+            <h2 id="leadership-title" className="mt-6 text-[clamp(36px,5.4vw,72px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
               <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">The team</span></span>
               <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">behind the standard.</span></span>
             </h2>
@@ -347,7 +347,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The next step</p>
-              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">If our standard</span></span>
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">matches your ambition.</span></span>
               </h2>

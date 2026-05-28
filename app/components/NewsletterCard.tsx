@@ -28,7 +28,7 @@ export default function NewsletterCard({
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#9A7E2C]">
                 <span aria-hidden="true">✦ </span>Stay in the loop
               </p>
-              <h2 id={titleId} className="mt-6 text-[clamp(30px,4.4vw,60px)] font-bold display-tight text-neutral-950 text-balance">
+              <h2 id={titleId} className="mt-6 text-[clamp(30px,4.4vw,60px)] font-semibold sm:font-bold display-tight text-neutral-950 text-balance">
                 {title ?? (
                   <>
                     <span className="block">Intelligence, delivered.</span>

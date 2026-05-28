@@ -53,7 +53,7 @@ export default function BlogPage() {
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Insights · Writing</p>
-          <h1 id="blog-title" className="mt-8 max-w-[16ch] text-[clamp(44px,7vw,108px)] font-bold display-tight text-neutral-50 text-balance">
+          <h1 id="blog-title" className="mt-8 max-w-[16ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Substance in writing.</span></span>
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">No noise. No filler.</span></span>
           </h1>
@@ -97,7 +97,7 @@ export default function BlogPage() {
                 <CategoryPill category={featured.category} />
                 <PostMeta post={featured} />
               </div>
-              <h2 id="featured-title" className="mt-6 text-[clamp(28px,3.8vw,48px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="featured-title" className="mt-6 text-[clamp(28px,3.8vw,48px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 {featured.title}
               </h2>
               <p className="mt-5 text-base sm:text-lg leading-[1.6] text-neutral-300 text-pretty">
@@ -120,7 +120,7 @@ export default function BlogPage() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-8 mb-12">
             <div className="lg:col-span-6">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">All writing</p>
-              <h2 id="all-title" className="mt-6 text-[clamp(28px,4vw,56px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="all-title" className="mt-6 text-[clamp(28px,4vw,56px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 Recent pieces.
               </h2>
             </div>
@@ -193,7 +193,7 @@ export default function BlogPage() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Work with us</p>
-              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Read it. Then</span></span>
                 <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">let&apos;s build.</span></span>
               </h2>

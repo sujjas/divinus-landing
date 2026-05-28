@@ -94,7 +94,7 @@ export default function ContactForm({ initialRoute, initialMode = 'message' }: P
         {/* Info column — direct lines */}
         <aside className="lg:col-span-5">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Direct lines</p>
-          <h2 className="mt-6 text-[clamp(28px,4vw,48px)] font-bold display-tight text-neutral-50 text-balance">
+          <h2 className="mt-6 text-[clamp(28px,4vw,48px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
             We will follow up<br/>
             <span className="text-neutral-500">within two working days.</span>
           </h2>

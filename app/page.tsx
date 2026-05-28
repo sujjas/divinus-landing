@@ -48,17 +48,18 @@ export default function Home() {
         <HeroGlobe />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24 lg:pt-32 lg:pb-32">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">
-            Divinus Investment Group · Global focus, African conviction
+            <span className="sm:hidden">Global focus · African conviction</span>
+            <span className="hidden sm:inline">Divinus Investment Group · Global focus, African conviction</span>
           </p>
 
-          <h1 data-anim="headline" className="mt-8 max-w-[14ch] text-[clamp(44px,7.4vw,116px)] font-bold display-tight text-neutral-50 text-balance">
+          <h1 data-anim="headline" className="mt-8 max-w-[14ch] text-[clamp(56px,9vw,116px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
             <span data-anim-line className="block">Capital. Intelligence. Community.</span>
-            <span data-anim-line className="block text-neutral-500 text-[clamp(22px,3.2vw,48px)] mt-3 tracking-tight">This is Divinus.</span>
+            <span data-anim-line className="block text-neutral-500 text-[clamp(32px,4.4vw,48px)] mt-3 tracking-tight">This is Divinus.</span>
           </h1>
 
           <div className="mt-14 grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-7 max-w-2xl">
-              <p data-anim="sub" className="text-lg sm:text-xl leading-[1.55] text-neutral-400 text-pretty">
+              <p data-anim="sub" className="text-lg sm:text-xl leading-[1.6] text-neutral-400 text-pretty">
                 A multi-division group company building the infrastructure of growth —
                 in organisations, in markets, and in people.
               </p>
@@ -66,17 +67,17 @@ export default function Home() {
               <div data-anim="cta" className="mt-8 flex flex-col items-start gap-y-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-3">
                 <Link
                   href="/divisions"
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-50 px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 transition"
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-50 px-5 py-3 text-base sm:text-sm font-semibold text-neutral-950 hover:bg-neutral-200 transition"
                 >
                   Explore the Divisions
                   <svg className="cta-arrow h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
                   </svg>
                 </Link>
-                <span className="text-sm text-neutral-600">or</span>
+                <span className="text-base sm:text-sm text-neutral-600">or</span>
                 <Link
                   href="/contact"
-                  className="text-sm font-semibold text-neutral-300 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 hover:text-neutral-50 transition"
+                  className="text-base sm:text-sm font-semibold text-neutral-300 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 hover:text-neutral-50 transition"
                 >
                   Get in touch with the team →
                 </Link>
@@ -108,7 +109,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10">
             <div className="lg:col-span-7">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500" data-anim="group-line">The architecture</p>
-              <h2 id="group-title" className="mt-6 text-[clamp(34px,5vw,72px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="group-title" className="mt-6 text-[clamp(34px,5vw,72px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span data-anim="group-line" className="block">One Group.</span>
                 <span data-anim="group-line" className="block">Seven Divisions.</span>
                 <span data-anim="group-line" className="block text-neutral-500">One Direction.</span>
@@ -224,7 +225,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div data-anim="comm-head" className="max-w-3xl">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">For individuals</p>
-            <h2 id="communities-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-bold display-tight text-neutral-50 text-balance">
+            <h2 id="communities-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
               Where substance<br/>meets community.
             </h2>
             <p className="mt-6 text-lg text-neutral-400 max-w-xl text-pretty">
@@ -324,7 +325,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div data-anim="route-head" className="max-w-3xl mb-14">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Where to begin</p>
-            <h2 id="routing-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-bold display-tight text-neutral-50 text-balance">
+            <h2 id="routing-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
               Find your place<br/>in the group.
             </h2>
             <p className="mt-6 text-lg text-neutral-400 max-w-xl text-pretty">
@@ -383,7 +384,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The next step</p>
-              <h2 id="cta-title" data-anim="cta-headline" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="cta-title" data-anim="cta-headline" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span data-anim-line className="block">Build organisations.</span>
                 <span data-anim-line className="block">Develop people.</span>
                 <span data-anim-line className="block text-neutral-500">Create value that lasts.</span>

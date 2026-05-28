@@ -101,7 +101,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
             )}
             <p className="text-xs font-mono uppercase tracking-[0.16em] text-[#C9A84C]">{event.displayDate}</p>
           </div>
-          <h1 id="event-title" className="mt-6 max-w-[22ch] text-[clamp(34px,5.2vw,80px)] font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
+          <h1 id="event-title" className="mt-6 max-w-[22ch] text-[clamp(34px,5.2vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
             {event.title}
           </h1>
           <p className="mt-5 text-xs font-mono uppercase tracking-[0.16em] text-neutral-300">{event.location}</p>
@@ -234,7 +234,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mb-12">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">More gatherings</p>
-              <h2 id="related-title" className="mt-6 text-[clamp(28px,4vw,48px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="related-title" className="mt-6 text-[clamp(28px,4vw,48px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 Other rooms.
               </h2>
             </div>
@@ -260,7 +260,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Stay close</p>
-              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-bold display-tight text-neutral-50 text-balance">
+              <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                 <span className="block">Be in the next</span>
                 <span className="block text-neutral-500">room with us.</span>
               </h2>
