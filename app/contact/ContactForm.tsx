@@ -81,7 +81,7 @@ export default function ContactForm({ initialRoute, initialMode = 'message' }: P
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setSubmitted(true);
     } catch (err) {
-      setError('Something went wrong. Please try again or email hello@divinus.com.');
+      setError('Something went wrong. Please try again or email divinusblack@gmail.com.');
       console.error('[contact] submission failed', err);
     } finally {
       setPending(false);
@@ -103,26 +103,13 @@ export default function ContactForm({ initialRoute, initialMode = 'message' }: P
             <div>
               <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Email</dt>
               <dd>
-                <a href="mailto:hello@divinus.com" className="text-lg font-semibold text-neutral-100 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">
-                  hello@divinus.com
+                <a href="mailto:divinusblack@gmail.com" className="text-lg font-semibold text-neutral-100 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">
+                  divinusblack@gmail.com
                 </a>
               </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Press & media</dt>
-              <dd>
-                <a href="mailto:press@divinus.com" className="text-base font-semibold text-neutral-200 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">
-                  press@divinus.com
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Partnerships</dt>
-              <dd>
-                <a href="mailto:partners@divinus.com" className="text-base font-semibold text-neutral-200 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">
-                  partners@divinus.com
-                </a>
-              </dd>
+              <p className="mt-2 text-sm text-neutral-500">
+                Press, partnerships, or general — pick a subject in the form and it reaches the right desk.
+              </p>
             </div>
             <div>
               <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Response time</dt>

@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server';
 //
 // Suggested env vars when wiring real delivery:
 //   RESEND_API_KEY            — provider key
-//   CONTACT_TO_EMAIL          — inbox to deliver to (e.g. hello@divinus.com)
+//   CONTACT_TO_EMAIL          — inbox to deliver to (e.g. divinusblack@gmail.com)
 //   CONTACT_FROM_EMAIL        — verified sender domain
 //
 // Implementation sketch:
