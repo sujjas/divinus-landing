@@ -98,8 +98,8 @@ export default function CommunitiesPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Communities · Divinus Exchange</p>
           <h1 id="comm-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Where substance</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">meets community.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Where substance</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-400">meets community.</span></span>
           </h1>
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             Divinus Exchange is the consumer platform of the group — the place
@@ -125,8 +125,8 @@ export default function CommunitiesPage() {
             <div className="lg:col-span-5">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The platform</p>
               <h2 id="platform-title" className="mt-6 text-[clamp(30px,4.4vw,56px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Two communities.</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">One standard.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Two communities.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">One standard.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-7 lg:pl-6 space-y-6">
@@ -170,7 +170,7 @@ export default function CommunitiesPage() {
               <div className="lg:col-span-5">
                 <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">{c.eyebrow}</p>
                 <h2 id={`${c.id}-title`} className="mt-6 text-[clamp(36px,5vw,72px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                  <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{c.name}</span></span>
+                  <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">{c.name}</span></span>
                 </h2>
                 <p className="mt-7 text-lg sm:text-xl font-medium text-neutral-200 italic text-pretty">
                   {c.standFor}
@@ -240,8 +240,8 @@ export default function CommunitiesPage() {
             <div className="lg:col-span-5">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Member experience</p>
               <h2 id="exp-title" className="mt-6 text-[clamp(30px,4.4vw,56px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">What members</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">actually do.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">What members</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">actually do.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-7 lg:pl-6 lg:pt-2">
@@ -280,8 +280,8 @@ export default function CommunitiesPage() {
             <div className="lg:col-span-7">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">A bridge to Capital</p>
               <h2 id="capital-link" className="mt-6 text-[clamp(28px,4vw,48px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Members get priority access</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">to Divinus Capital’s financial education programmes.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Members get priority access</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">to Divinus Capital’s financial education programmes.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-5 lg:pl-6">
@@ -320,8 +320,8 @@ export default function CommunitiesPage() {
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Apply</p>
               <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Choose your</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">community.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Choose your</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">community.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-4 lg:pl-6">

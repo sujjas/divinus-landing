@@ -189,8 +189,8 @@ export default function DivisionsPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Divisions</p>
           <h1 id="div-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Seven divisions.</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">One direction.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Seven divisions.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-400">One direction.</span></span>
           </h1>
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             One Group. Seven Divisions. One Direction. Each carries a single mandate.
@@ -264,7 +264,7 @@ export default function DivisionsPage() {
                     </span>
                   </div>
                   <h2 id={`${d.id}-title`} className="mt-6 text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                    <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{d.name}</span></span>
+                    <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">{d.name}</span></span>
                   </h2>
                   {d.tagline && (
                     <p className="mt-5 text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">
@@ -367,8 +367,8 @@ export default function DivisionsPage() {
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The next step</p>
               <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">One conversation.</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">Seven possible doors.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">One conversation.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">Seven possible doors.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-4 lg:pl-6">

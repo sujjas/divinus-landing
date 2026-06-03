@@ -68,8 +68,8 @@ export default function EventsPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Events · Convenings</p>
           <h1 id="events-title" className="mt-8 max-w-[16ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Where we gather.</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">In rooms that matter.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Where we gather.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-400">In rooms that matter.</span></span>
           </h1>
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             Forums, retreats, programmes, and dinners — closed and open. Where the work happens
@@ -158,8 +158,8 @@ export default function EventsPage() {
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Stay close</p>
               <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Be in the next</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">room with us.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Be in the next</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">room with us.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-4 lg:pl-6">

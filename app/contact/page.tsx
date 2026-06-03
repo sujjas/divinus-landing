@@ -37,8 +37,8 @@ export default async function ContactPage({
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Contact</p>
           <h1 id="contact-title" className="mt-8 max-w-[14ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Get in touch.</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">One reply, no rounds.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Get in touch.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-400">One reply, no rounds.</span></span>
           </h1>
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             Tell us what you’re trying to do. We will follow up within two working days —
@@ -71,8 +71,8 @@ export default async function ContactPage({
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Response time</p>
               <h2 id="sla-title" className="mt-6 text-[clamp(34px,5vw,72px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">We will follow up</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">within two working days.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">We will follow up</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">within two working days.</span></span>
               </h2>
             </div>
           </div>

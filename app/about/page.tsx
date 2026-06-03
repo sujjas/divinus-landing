@@ -79,8 +79,8 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">About</p>
           <h1 id="about-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">About Divinus</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">Investment Group.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">About Divinus</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-400">Investment Group.</span></span>
           </h1>
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             A multi-division group company building the infrastructure of growth —
@@ -97,8 +97,8 @@ export default function AboutPage() {
             <div className="lg:col-span-5">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Who we are</p>
               <h2 id="who-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">One organism.</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Not a holding company.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">One organism.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Not a holding company.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-7 lg:pl-6 space-y-6">
@@ -157,9 +157,9 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Mission</p>
           <h2 id="mission-title" className="mt-8 max-w-[20ch] text-[clamp(40px,6.4vw,104px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Build organisations.</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Develop people.</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">Create value that lasts.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Build organisations.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Develop people.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">Create value that lasts.</span></span>
           </h2>
         </div>
       </section>
@@ -171,8 +171,8 @@ export default function AboutPage() {
             <div className="lg:col-span-6">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The architecture</p>
               <h2 id="arch-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Seven divisions.</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">One mandate each.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Seven divisions.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">One mandate each.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-6 lg:pl-6 lg:pt-3">
@@ -226,8 +226,8 @@ export default function AboutPage() {
           <div className="max-w-2xl mb-14">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Values</p>
             <h2 id="values-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-              <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Precision · Integrity ·</span></span>
-              <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Ambition · Impact.</span></span>
+              <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Precision · Integrity ·</span></span>
+              <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Ambition · Impact.</span></span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-neutral-800 border border-neutral-800">
@@ -256,8 +256,8 @@ export default function AboutPage() {
             <div className="lg:col-span-4">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Our story</p>
               <h2 id="story-title" className="mt-6 text-[clamp(34px,5vw,56px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Why we</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">were built.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Why we</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">were built.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-8 lg:pl-6 space-y-7 text-lg leading-[1.7] text-neutral-300 text-pretty">
@@ -302,8 +302,8 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Leadership</p>
             <h2 id="leadership-title" className="mt-6 text-[clamp(36px,5.4vw,72px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
-              <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">The team</span></span>
-              <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">behind the standard.</span></span>
+              <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">The team</span></span>
+              <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">behind the standard.</span></span>
             </h2>
             <p className="mt-8 text-lg leading-[1.65] text-neutral-300 text-pretty">
               Divinus is led by a team with experience across strategy, technology,
@@ -374,8 +374,8 @@ export default function AboutPage() {
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The next step</p>
               <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">If our standard</span></span>
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">matches your ambition.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">If our standard</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">matches your ambition.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-4 lg:pl-6">

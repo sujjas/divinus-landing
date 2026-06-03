@@ -109,8 +109,8 @@ export default function InvestorsPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Investor Relations · Capital Raise 2026</p>
           <h1 id="inv-title" className="mt-8 max-w-[16ch] text-[clamp(44px,7vw,108px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Investing in the highest-yield</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">asset on the continent.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Investing in the highest-yield</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-400">asset on the continent.</span></span>
           </h1>
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             Africa’s greatest resource is its people. Divinus is building the
@@ -139,7 +139,7 @@ export default function InvestorsPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Where we stand today</p>
           <h2 id="traction-title" className="mt-6 max-w-[20ch] text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Early. Validated. Building.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Early. Validated. Building.</span></span>
           </h2>
 
           <div className="mt-14 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800">
@@ -159,7 +159,7 @@ export default function InvestorsPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">The opportunity</p>
           <h2 id="opp-title" className="mt-6 max-w-[20ch] text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">The infrastructure Africa is missing.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">The infrastructure Africa is missing.</span></span>
           </h2>
 
           <div className="mt-14 sm:mt-16 grid lg:grid-cols-2 gap-x-12 gap-y-12">
@@ -222,7 +222,7 @@ export default function InvestorsPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Business model</p>
           <h2 id="rev-title" className="mt-6 max-w-[20ch] text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Four revenue streams. One architecture.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Four revenue streams. One architecture.</span></span>
           </h2>
 
           <div className="mt-14 sm:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-px bg-neutral-800 border border-neutral-800">
@@ -243,7 +243,7 @@ export default function InvestorsPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">The raise</p>
           <h2 id="ask-title" className="mt-6 max-w-[20ch] text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">A clear ask. A clear plan.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">A clear ask. A clear plan.</span></span>
           </h2>
 
           <div className="mt-14 sm:mt-16 grid lg:grid-cols-2 gap-x-12 gap-y-12 items-start">
@@ -296,7 +296,7 @@ export default function InvestorsPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Execution roadmap</p>
           <h2 id="road-title" className="mt-6 max-w-[20ch] text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">What happens next.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">What happens next.</span></span>
           </h2>
 
           <div className="mt-14 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800">
@@ -320,7 +320,7 @@ export default function InvestorsPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Why Divinus. Why now.</p>
           <h2 id="why-title" className="mt-6 max-w-[20ch] text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Three reasons this is the moment.</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Three reasons this is the moment.</span></span>
           </h2>
 
           <div className="mt-14 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-800 border border-neutral-800">
@@ -358,7 +358,7 @@ export default function InvestorsPage() {
             <div className="lg:col-span-8">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">If this matches your horizon</p>
               <h2 id="cta-title" className="mt-6 text-[clamp(36px,5.5vw,80px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Let’s talk.</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Let’s talk.</span></span>
               </h2>
             </div>
             <div className="lg:col-span-4 lg:pl-6">

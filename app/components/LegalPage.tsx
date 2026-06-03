@@ -27,7 +27,7 @@ export default function LegalPage({
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">{eyebrow}</p>
           <h1 id="legal-title" className="mt-7 text-[clamp(38px,6vw,72px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.04]">
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{title}</span></span>
+            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">{title}</span></span>
           </h1>
           <p className="mt-7 text-lg leading-[1.6] text-neutral-400 text-pretty">{lede}</p>
           <p className="mt-6 text-xs font-mono uppercase tracking-[0.16em] text-neutral-600">Last updated · {lastUpdated}</p>
