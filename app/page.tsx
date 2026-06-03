@@ -13,13 +13,13 @@ export const metadata = {
 };
 
 const DIVISIONS = [
-  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     img: '/divisions/ai.jpg' },
-  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          img: '/divisions/advisory.jpg' },
-  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     line: 'The platform where substance meets community — Men of Substance and Genesis Woman.', img: '/divisions/exchange.jpg' },
-  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      line: 'Software products and digital systems engineered for African markets.',     img: '/divisions/labs.jpg' },
-  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     line: 'Education Before Action. This is not a signals group — it is a school.',    img: '/divisions/capital.jpg' },
-  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     line: 'Long-horizon partnerships with the institutions building the continent.',   img: '/divisions/partners.jpg' },
-  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        line: 'Where conviction meets contribution — the philanthropic arm of the group.', img: '/divisions/foundation.jpg' },
+  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  status: { label: 'Active', active: true },              line: 'Building and deploying African AI capability — for the institutions, businesses, and governments shaping the next decade.', img: '/divisions/ai.jpg' },
+  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      status: { label: 'Active', active: true },              line: 'Strategic and operational counsel for founders and leaders who need the answer to compound, not just the deck.',          img: '/divisions/advisory.jpg' },
+  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     status: { label: 'In Development', active: false },     line: 'The community platform of the group — where African men and women of standard find their people.',                        img: '/divisions/exchange.jpg' },
+  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      status: { label: 'Launching Q4 2026', active: false },  line: 'Software products and digital systems engineered for African markets — built to be owned, not rented.',                   img: '/divisions/labs.jpg' },
+  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     status: { label: 'Launching Q3 2026', active: false },  line: 'Financial education for the African individual — because understanding capital is the first act of building it.',          img: '/divisions/capital.jpg' },
+  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     status: { label: 'In Development', active: false },     line: 'Long-horizon alliances with the institutions, governments, and organisations building the continent alongside us.',       img: '/divisions/partners.jpg' },
+  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        status: { label: 'Launching Q2 2027', active: false },  line: 'The philanthropic arm of the group — investing in the young Africans the continent cannot afford to leave behind.',        img: '/divisions/foundation.jpg' },
 ];
 
 const ROUTES = [
@@ -101,6 +101,68 @@ export default function Home() {
           </div>
         </div>
 
+      </section>
+
+      {/* THE DIVINUS CONVICTION */}
+      <section data-section="conviction" className="relative border-t border-neutral-800/70 bg-neutral-900/40 py-24 sm:py-32" aria-labelledby="conviction-title">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-12">
+            <div className="lg:col-span-5">
+              <div className="lg:sticky lg:top-32">
+                <p className="text-xs font-mono uppercase tracking-[0.22em] text-[#C9A84C]">The Divinus Conviction</p>
+                <h2 id="conviction-title" className="mt-8 text-[clamp(34px,4.4vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
+                  <span className="block">We don’t manage funds.</span>
+                  <span className="block text-neutral-500">We develop people.</span>
+                </h2>
+                <p className="mt-8 max-w-md text-lg leading-[1.55] text-neutral-400 text-pretty">
+                  Every division in this group exists for one reason — to close the gap
+                  between the potential Africa carries and the outcomes it deserves.
+                </p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 lg:pt-2">
+              <div className="space-y-7 text-[16px] sm:text-lg leading-[1.7] text-neutral-300 text-pretty">
+                <p>
+                  Africa’s greatest asset is not its land, its resources, or its markets.
+                  It is its people.
+                </p>
+                <p>
+                  Divinus Investment Group exists to invest in that asset — the African
+                  human. Through education, mentorship, AI augmentation, financial
+                  literacy, and community, every division of the group is designed to
+                  close the gap between raw potential and realised achievement. We do not
+                  manage funds. We develop people — and we build the infrastructure
+                  around them so that development compounds.
+                </p>
+                <p>
+                  This is what we mean by investment. Capital deployed into capability.
+                  Intelligence applied to ambition. Community built around standard. When
+                  a person understands how markets work, leads with discipline, builds
+                  with technology, and is surrounded by others doing the same — that is a
+                  return no balance sheet can fully capture. That is the Divinus mandate.
+                </p>
+              </div>
+
+              <figure className="mt-12 border-l-2 border-[#C9A84C] pl-6 sm:pl-8">
+                <blockquote>
+                  <p className="text-[clamp(22px,2.6vw,34px)] font-semibold display-tight leading-[1.2] text-neutral-50 text-balance">
+                    The elevation of the African individual is the highest-yield investment on the continent.
+                  </p>
+                </blockquote>
+              </figure>
+
+              <div className="mt-12 flex flex-wrap items-center gap-4">
+                <Link href="/about" className="inline-flex items-center gap-2 rounded-full bg-neutral-50 px-6 py-3 text-sm font-medium text-neutral-950 hover:bg-neutral-200 transition">
+                  Read about the Group <span aria-hidden="true">→</span>
+                </Link>
+                <Link href="/divisions" className="inline-flex items-center gap-2 rounded-full border border-neutral-700 px-6 py-3 text-sm font-medium text-neutral-200 hover:border-neutral-500 hover:text-neutral-50 transition">
+                  Explore the Divisions <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* GROUP OVERVIEW */}
@@ -210,9 +272,26 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="col-span-12 sm:col-span-7">
-                  <h4 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">
-                    {d.name}
-                  </h4>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <h4 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">
+                      {d.name}
+                    </h4>
+                    <span
+                      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] ${
+                        d.status.active
+                          ? 'border-[#C9A84C]/40 text-[#C9A84C]'
+                          : 'border-neutral-700 text-neutral-400'
+                      }`}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          d.status.active ? 'bg-[#C9A84C]' : 'border border-neutral-500 bg-transparent'
+                        }`}
+                      />
+                      {d.status.label}
+                    </span>
+                  </div>
                   <p className="mt-3 text-lg leading-[1.55] text-neutral-400 max-w-xl text-pretty">
                     {d.line}
                   </p>

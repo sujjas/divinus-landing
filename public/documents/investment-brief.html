@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Investment Brief 2026 — Divinus Investment Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --gold: #C9A84C;
+    --bg: #0a0a0a;
+    --raised: #171717;
+    --line: #262626;
+    --line-soft: #1f1f1f;
+    --fg: #fafafa;
+    --muted: #a3a3a3;
+    --dim: #737373;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    background: #050505;
+    color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 28px 16px;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 24px;
+    background: var(--bg);
+    padding: 20mm 18mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .display { font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+
+  h2.title { font-size: 38px; margin-top: 16px; max-width: 16ch; }
+  h2.title em { font-style: normal; color: var(--dim); }
+
+  p.lede { margin-top: 18px; font-size: 13.5px; color: var(--muted); line-height: 1.8; max-width: 66ch; }
+  p.lede strong { color: var(--fg); font-weight: 500; }
+  p.lede + p.lede { margin-top: 14px; }
+
+  .brand-name { font-weight: 800; font-size: 16px; letter-spacing: 0.02em; }
+  .brand-name span { color: var(--gold); }
+
+  .pagefoot {
+    margin-top: auto;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); white-space: nowrap;
+  }
+  .pill .dot { width: 5px; height: 5px; border-radius: 999px; border: 1px solid var(--dim); }
+  .pill.active { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+  .pill.active .dot { background: var(--gold); border-color: var(--gold); }
+
+  /* ── COVER (p1) ── */
+  .cover { justify-content: space-between; }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-conf { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  .cover-mid h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+  .cover-mid h1 span { color: var(--gold); }
+  .cover-doc { margin-top: 30px; }
+  .cover-doc .big { font-size: 56px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .cover-doc .sub { margin-top: 14px; font-size: 13px; color: var(--muted); max-width: 52ch; line-height: 1.7; }
+  .cover-quote { border-left: 2px solid var(--gold); padding-left: 20px; margin-top: 34px; }
+  .cover-quote p { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; max-width: 30ch; }
+  .cover-contacts { border-top: 1px solid var(--line); padding-top: 16px; }
+  .cover-contacts .label { font-family:'IBM Plex Mono',monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+  .cover-contacts .row { margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+  .cover-contacts .row b { color: var(--fg); font-weight: 600; }
+  .cover-contacts .email { margin-top: 10px; font-size: 12px; color: var(--gold); }
+
+  /* ── GENERIC GRIDS ── */
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+  .factlist { margin-top: 18px; border-top: 1px solid var(--line); }
+  .factrow { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line-soft); }
+  .factrow dt { font-family:'IBM Plex Mono',monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); padding-top: 2px; }
+  .factrow dd { font-size: 12.5px; color: var(--fg); line-height: 1.5; }
+
+  .statline { margin-top: 20px; display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .statbox { background: var(--bg); padding: 16px 14px; }
+  .statbox .v { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: var(--gold); line-height: 1; }
+  .statbox .k { margin-top: 9px; font-family:'IBM Plex Mono',monospace; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .statbox .d { margin-top: 6px; font-size: 10px; color: var(--dim); line-height: 1.45; }
+
+  /* ── STREAMS (p3) ── */
+  .streams { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .stream { background: var(--bg); padding: 20px; }
+  .stream .num { font-family:'IBM Plex Mono',monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+  .stream h3 { margin-top: 10px; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .stream p { margin-top: 8px; font-size: 11.5px; color: var(--muted); line-height: 1.65; }
+  .stream .pill { margin-top: 14px; }
+
+  .dynamics { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .dyn-grid { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; }
+  .dyn b { font-size: 12.5px; font-weight: 600; color: var(--gold); }
+  .dyn p { font-size: 11.5px; color: var(--muted); margin-top: 3px; line-height: 1.6; }
+
+  /* ── RAISE (p4) ── */
+  .raise-amount { margin-top: 14px; }
+  .raise-amount .big { font-size: 58px; font-weight: 700; letter-spacing: -0.03em; color: var(--gold); line-height: 1; }
+  .raise-amount .cur { margin-top: 8px; font-family:'IBM Plex Mono',monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+  .use { margin-top: 22px; }
+  .use .label, .why .label, .seek .label { font-family:'IBM Plex Mono',monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .uselist { margin-top: 12px; border-top: 1px solid var(--line); }
+  .userow { padding: 11px 0; border-bottom: 1px solid var(--line-soft); }
+  .userow b { font-size: 13px; font-weight: 600; }
+  .userow span { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .why { margin-top: 6px; }
+  .why .item { margin-top: 14px; }
+  .why .item b { font-size: 13px; font-weight: 600; color: var(--fg); }
+  .why .item p { font-size: 11.5px; color: var(--muted); margin-top: 3px; line-height: 1.6; }
+  .seek { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 16px; }
+  .seek p { margin-top: 10px; font-size: 12.5px; color: var(--muted); line-height: 1.75; max-width: 80ch; }
+
+  /* ── ARCHITECTURE (p5) ── */
+  .arch-rows { margin-top: 16px; border-top: 1px solid var(--line); }
+  .arow { display: grid; grid-template-columns: 30px 1fr auto; align-items: center; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--line-soft); }
+  .arow .n { font-family:'IBM Plex Mono',monospace; font-size: 10px; color: var(--dim); }
+  .arow .nm { font-size: 13px; font-weight: 600; }
+  .arow .ln { font-size: 11px; color: var(--muted); }
+  .roadmap { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .road-grid { margin-top: 14px; display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .road { background: var(--bg); padding: 16px 14px; }
+  .road .dotmark { width: 11px; height: 11px; border-radius: 999px; border: 2px solid var(--gold); background: var(--bg); }
+  .road .dotmark.filled { background: var(--gold); }
+  .road .per { margin-top: 12px; font-family:'IBM Plex Mono',monospace; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .road h4 { margin-top: 6px; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+  .road p { margin-top: 5px; font-size: 10px; color: var(--dim); line-height: 1.5; }
+
+  /* ── LEADERSHIP (p6) ── */
+  .leaders { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .leader { background: var(--bg); padding: 22px; }
+  .leader .nm { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+  .leader .role { margin-top: 5px; font-family:'IBM Plex Mono',monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .leader .meta { margin-top: 14px; font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .conviction { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .conviction .q { border-left: 2px solid var(--gold); padding-left: 18px; }
+  .conviction .q p { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; max-width: 44ch; }
+  .conviction .body { margin-top: 14px; font-size: 12px; color: var(--muted); line-height: 1.75; max-width: 80ch; }
+  .next { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .next .label { font-family:'IBM Plex Mono',monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .next ol { margin-top: 12px; list-style: none; }
+  .next li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 7px 0; font-size: 12px; color: var(--fg); border-bottom: 1px solid var(--line-soft); }
+  .next li .ix { font-family:'IBM Plex Mono',monospace; color: var(--gold); }
+  .next .cta { margin-top: 14px; font-size: 12px; color: var(--gold); }
+
+  @media print {
+    body { padding: 0; background: var(--bg); }
+    .page { width: 100%; height: 100vh; margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ════ PAGE 1 · COVER ════ -->
+  <section class="page cover">
+    <div class="cover-top">
+      <div class="brand-name">DIVINUS<span>.</span></div>
+      <div class="cover-conf">Confidential · Private Placement</div>
+    </div>
+
+    <div class="cover-mid">
+      <h1>DIVINUS <span>INVESTMENT GROUP</span></h1>
+      <div class="eyebrow" style="margin-top:8px;">Capital. Intelligence. Community.</div>
+      <div class="cover-doc">
+        <div class="eyebrow">Investment Brief · 2026</div>
+        <div class="big display" style="margin-top:10px;">Seed Equity Round</div>
+        <p class="sub">Seed Equity Round · $2,000,000 USD · Building the infrastructure of human capital development across Africa.</p>
+      </div>
+      <div class="cover-quote">
+        <p>“The elevation of the African individual is the highest-yield investment on the continent.”</p>
+      </div>
+    </div>
+
+    <div class="cover-contacts">
+      <div class="label">Investor contacts</div>
+      <div class="row"><b>Danston Mugarura</b> · London, UK · +44 7909 739 609</div>
+      <div class="row"><b>Daniel Mulondo</b> · Dubai, UAE · +971 58 940 0381</div>
+      <div class="email">divinusblack@gmail.com</div>
+      <div class="pagefoot"><span>Divinus Investment Group Limited · Registered in England &amp; Wales · 2026</span><span>01 / 06</span></div>
+    </div>
+  </section>
+
+  <!-- ════ PAGE 2 · EXECUTIVE SUMMARY ════ -->
+  <section class="page">
+    <p class="eyebrow">Executive Summary</p>
+    <h2 class="title display">The Opportunity <em>in One Page.</em></h2>
+    <p class="lede">Africa’s greatest asset is not its land, its resources, or its markets. It is its people. Divinus Investment Group exists to invest in that asset — the African human. Through education, mentorship, AI augmentation, financial literacy, and community, every division of the group is designed to close the gap between raw potential and realised achievement.</p>
+    <p class="lede">We do not manage funds. We develop people — and we build the infrastructure around them so that development compounds. This is what we mean by investment. <strong>Capital deployed into capability. Intelligence applied to ambition. Community built around standard.</strong></p>
+
+    <div class="twocol" style="margin-top:26px;">
+      <div>
+        <p class="eyebrow">Key Facts</p>
+        <dl class="factlist">
+          <div class="factrow"><dt>Structure</dt><dd>Divinus Investment Group Limited, registered in England &amp; Wales</dd></div>
+          <div class="factrow"><dt>Round</dt><dd>Seed Equity · $2,000,000 USD</dd></div>
+          <div class="factrow"><dt>Stage</dt><dd>Validation — revenue generating, pre product launch</dd></div>
+          <div class="factrow"><dt>Headquarters</dt><dd>London, UK · with operations in Dubai and Africa</dd></div>
+          <div class="factrow"><dt>Divisions</dt><dd>Seven — two active, two launching 2026, three in development</dd></div>
+          <div class="factrow"><dt>Revenue to date</dt><dd>$110,000 USD — Advisory &amp; AI Training</dd></div>
+        </dl>
+      </div>
+      <div>
+        <p class="eyebrow">Traction Snapshot</p>
+        <div class="statline" style="grid-template-columns:1fr 1fr;">
+          <div class="statbox"><div class="v">57</div><div class="k">Clients served</div><div class="d">AI augmentation &amp; capital-markets training</div></div>
+          <div class="statbox"><div class="v">800</div><div class="k">Community members</div><div class="d">Men of Substance &amp; Genesis Woman</div></div>
+          <div class="statbox"><div class="v">$110K</div><div class="k">Revenue generated</div><div class="d">Pre product-launch revenue</div></div>
+          <div class="statbox"><div class="v">1,300</div><div class="k">Waitlist</div><div class="d">Pre-registered for Q3 2026 launches</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagefoot"><span>Confidential · intended solely for the named recipient · Divinus Capital is a financial education division — not regulated financial advice</span><span>02 / 06</span></div>
+  </section>
+
+  <!-- ════ PAGE 3 · BUSINESS MODEL ════ -->
+  <section class="page">
+    <p class="eyebrow">Business Model</p>
+    <h2 class="title display">Four Revenue Streams. <em>One Architecture.</em></h2>
+    <p class="lede">The Divinus business model is built around four interlocking revenue streams. Each division generates its own revenue while feeding demand into the others — creating a compounding flywheel rather than isolated business units.</p>
+
+    <div class="streams">
+      <div class="stream">
+        <div class="num">01 / Revenue</div>
+        <h3>Training &amp; Coaching</h3>
+        <p>Financial education cohorts, AI augmentation training, and executive coaching via Divinus Capital and Advisory. Cohort-based recurring revenue. 1,300-person waitlist validated.</p>
+        <span class="pill active"><span class="dot"></span>Active</span>
+      </div>
+      <div class="stream">
+        <div class="num">02 / Revenue</div>
+        <h3>XA Trading Engine</h3>
+        <p>Proprietary trading infrastructure connecting traders, brokers, agencies and service providers. Volume-based revenue on trading lots. Launching via strategic partnership. IP owned by Divinus.</p>
+        <span class="pill"><span class="dot"></span>Launching Q3 2026</span>
+      </div>
+      <div class="stream">
+        <div class="num">03 / Revenue</div>
+        <h3>SaaS Applications</h3>
+        <p>Consumer and B2B software products via Divinus Labs — social AI applications and productivity tools engineered for African markets. Subscription revenue.</p>
+        <span class="pill"><span class="dot"></span>Launching Q4 2026</span>
+      </div>
+      <div class="stream">
+        <div class="num">04 / Revenue</div>
+        <h3>Community Marketplace</h3>
+        <p>Vetted e-commerce platform within Men of Substance and Genesis Woman communities. Curated African marketplace with platform fees and partner revenue. Divinus-badged providers.</p>
+        <span class="pill"><span class="dot"></span>In Development</span>
+      </div>
+    </div>
+
+    <div class="dynamics">
+      <p class="eyebrow">Model Dynamics</p>
+      <div class="dyn-grid">
+        <div class="dyn"><b>Training feeds community.</b><p>Every graduate of Divinus Capital becomes a natural candidate for Exchange membership.</p></div>
+        <div class="dyn"><b>Community feeds marketplace.</b><p>Exchange members are the first buyers and sellers in the community marketplace.</p></div>
+        <div class="dyn"><b>Marketplace feeds platform.</b><p>Transaction volume and data from the marketplace informs product and AI development in Labs.</p></div>
+        <div class="dyn"><b>XA engine scales with network.</b><p>Trading-engine revenue grows with user volume — every new trader, broker or partner increases yield.</p></div>
+      </div>
+    </div>
+
+    <div class="pagefoot"><span>Confidential · Divinus Investment Group Limited · 2026</span><span>03 / 06</span></div>
+  </section>
+
+  <!-- ════ PAGE 4 · THE RAISE ════ -->
+  <section class="page">
+    <p class="eyebrow">The Raise</p>
+    <h2 class="title display">Seed Equity Round.</h2>
+    <div class="raise-amount">
+      <div class="big">$2,000,000</div>
+      <div class="cur">USD · Equity · 2026</div>
+    </div>
+
+    <div class="twocol" style="margin-top:24px;">
+      <div class="use">
+        <div class="label">Use of Capital</div>
+        <div class="uselist">
+          <div class="userow"><b>Technology Infrastructure</b><span>XA Engine + core platform build</span></div>
+          <div class="userow"><b>Product Development</b><span>Labs applications &amp; SaaS products</span></div>
+          <div class="userow"><b>Market Activation</b><span>Capital &amp; Exchange programme launch</span></div>
+          <div class="userow"><b>Operational Scale</b><span>Team expansion &amp; infrastructure</span></div>
+        </div>
+      </div>
+      <div class="why">
+        <div class="label">Why Now</div>
+        <div class="item"><b>Demand already proven.</b><p>$110K revenue, 800 community members, and 1,300 on waitlist — all before a single product launch.</p></div>
+        <div class="item"><b>The infrastructure gap is real.</b><p>Africa’s human-capital development infrastructure is fragmented and underbuilt. Divinus builds natively for African markets.</p></div>
+        <div class="item"><b>The architecture compounds.</b><p>Seven divisions that reinforce each other. Investment in one pays dividends across all seven.</p></div>
+        <div class="item"><b>The team is in position.</b><p>Leadership operating across London and Dubai with active client relationships and proven early revenue.</p></div>
+      </div>
+    </div>
+
+    <div class="seek">
+      <div class="label">What We Are Looking For</div>
+      <p>We are seeking equity investors who understand the African opportunity, take a long-horizon view, and want a single accountable counterparty across a multi-division architecture. Strategic value — networks, distribution, sector expertise — is weighted alongside capital.</p>
+    </div>
+
+    <div class="pagefoot"><span>Confidential · Divinus Investment Group Limited · 2026</span><span>04 / 06</span></div>
+  </section>
+
+  <!-- ════ PAGE 5 · ARCHITECTURE & ROADMAP ════ -->
+  <section class="page">
+    <p class="eyebrow">Architecture &amp; Roadmap</p>
+    <h2 class="title display">Seven Divisions. <em>One Direction.</em></h2>
+
+    <div class="arch-rows">
+      <div class="arow"><span class="n">01</span><span><span class="nm">Divinus AI · Vision Africa</span> <span class="ln">— Building and deploying African AI capability for institutions, businesses, and governments.</span></span><span class="pill active"><span class="dot"></span>Active</span></div>
+      <div class="arow"><span class="n">02</span><span><span class="nm">Divinus Advisory</span> <span class="ln">— Strategic and operational counsel for founders and leaders who need the answer to compound.</span></span><span class="pill active"><span class="dot"></span>Active</span></div>
+      <div class="arow"><span class="n">03</span><span><span class="nm">Divinus Exchange</span> <span class="ln">— Community platform: Men of Substance and Genesis Woman. The human layer of the group.</span></span><span class="pill"><span class="dot"></span>In Development</span></div>
+      <div class="arow"><span class="n">04</span><span><span class="nm">Divinus Labs</span> <span class="ln">— Software products and digital systems engineered for African markets. Built to be owned.</span></span><span class="pill"><span class="dot"></span>Launching Q4 2026</span></div>
+      <div class="arow"><span class="n">05</span><span><span class="nm">Divinus Capital</span> <span class="ln">— Financial education for the African individual. Education Before Action.</span></span><span class="pill"><span class="dot"></span>Launching Q3 2026</span></div>
+      <div class="arow"><span class="n">06</span><span><span class="nm">Strategic Partners</span> <span class="ln">— Long-horizon alliances with institutions, governments, and organisations building the continent.</span></span><span class="pill"><span class="dot"></span>In Development</span></div>
+      <div class="arow"><span class="n">07</span><span><span class="nm">The Divinus Foundation</span> <span class="ln">— The philanthropic arm — investing in young Africans the continent cannot afford to leave behind.</span></span><span class="pill"><span class="dot"></span>Launching Q2 2027</span></div>
+    </div>
+
+    <div class="roadmap">
+      <p class="eyebrow">Execution Roadmap</p>
+      <div class="road-grid">
+        <div class="road"><span class="dotmark filled"></span><div class="per">Now · Active</div><h4>AI &amp; Advisory Live</h4><p>57 clients. $110K revenue. Foundation established.</p></div>
+        <div class="road"><span class="dotmark"></span><div class="per">Q3 2026</div><h4>XA Engine + Capital Launch</h4><p>Trading engine goes live. 1,300-person waitlist opens.</p></div>
+        <div class="road"><span class="dotmark"></span><div class="per">Q4 2026</div><h4>Labs + Exchange Platform</h4><p>SaaS products ship. Community marketplace launches.</p></div>
+        <div class="road"><span class="dotmark"></span><div class="per">Q2 2027</div><h4>Foundation + Full Architecture</h4><p>All 7 divisions operational. Group enters scale phase.</p></div>
+      </div>
+    </div>
+
+    <div class="pagefoot"><span>Confidential · Divinus Investment Group Limited · 2026</span><span>05 / 06</span></div>
+  </section>
+
+  <!-- ════ PAGE 6 · LEADERSHIP & CONTACT ════ -->
+  <section class="page">
+    <p class="eyebrow">Leadership &amp; Contact</p>
+    <h2 class="title display">The Team <em>Behind the Standard.</em></h2>
+
+    <div class="leaders">
+      <div class="leader">
+        <div class="nm">Danston Mugarura</div>
+        <div class="role">Chief Executive Officer</div>
+        <div class="meta">London, United Kingdom<br/>+44 7909 739 609<br/>divinusblack@gmail.com<br/>divinus.io</div>
+      </div>
+      <div class="leader">
+        <div class="nm">Daniel Mulondo</div>
+        <div class="role">Chief Financial Officer</div>
+        <div class="meta">Dubai, United Arab Emirates<br/>+971 58 940 0381<br/>divinusblack@gmail.com<br/>divinus.io</div>
+      </div>
+    </div>
+
+    <div class="conviction">
+      <p class="eyebrow">Our Conviction</p>
+      <div class="q" style="margin-top:12px;">
+        <p>“Africa is not short on talent, ambition, or opportunity. It is short on the infrastructure that converts potential into outcomes.”</p>
+      </div>
+      <p class="body">Divinus was built to be that infrastructure. Not a fund, not a consultancy, not a community app — but the architecture that ties capital, intelligence, and community into a single system. Seven divisions designed to reinforce one another, each running to a standard the next can rely on.</p>
+    </div>
+
+    <div class="next">
+      <div class="label">Next Steps</div>
+      <ol>
+        <li><span class="ix">01</span><span>Review this brief and the accompanying division architecture at divinus.io/investors</span></li>
+        <li><span class="ix">02</span><span>Request the full financial model and projection deck</span></li>
+        <li><span class="ix">03</span><span>Schedule an introductory call with the founding team</span></li>
+        <li><span class="ix">04</span><span>Receive the subscription agreement and formal term sheet</span></li>
+      </ol>
+      <div class="cta">To request the full brief or arrange a call: divinusblack@gmail.com · divinus.io · London &amp; Dubai</div>
+    </div>
+
+    <div class="pagefoot"><span>Confidential · does not constitute a public offer of securities or regulated financial advice · © 2026 Divinus Investment Group Limited</span><span>06 / 06</span></div>
+  </section>
+
+</body>
+</html>

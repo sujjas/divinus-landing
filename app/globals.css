@@ -301,3 +301,39 @@ a:hover .cta-arrow, button:hover .cta-arrow {
     @apply font-sans;
   }
 }
+/* ── Legal / long-form prose (Privacy, Terms) ── */
+.legal-prose section + section { margin-top: 2.75rem; }
+.legal-prose h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fafafa;
+  margin-bottom: 1rem;
+}
+.legal-prose p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #a3a3a3;
+  text-wrap: pretty;
+}
+.legal-prose p + p { margin-top: 1rem; }
+.legal-prose a { color: #C9A84C; text-decoration: underline; text-underline-offset: 3px; }
+.legal-prose a:hover { color: #e0c876; }
+.legal-prose strong { color: #e5e5e5; font-weight: 500; }
+.legal-prose ul { margin-top: 1rem; list-style: none; }
+.legal-prose ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #a3a3a3;
+}
+.legal-prose ul li + li { margin-top: 0.6rem; }
+.legal-prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.7em;
+  width: 5px; height: 5px;
+  border-radius: 999px;
+  background: #C9A84C;
+}

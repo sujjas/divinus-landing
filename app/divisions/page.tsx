@@ -23,6 +23,8 @@ type Division = {
   id: string;
   eyebrow: string;
   name: string;
+  status: { label: string; active: boolean };
+  mandate: string;
   tagline?: string;
   intro: string;
   serviceTitle: string;
@@ -35,7 +37,8 @@ const DIVISIONS: Division[] = [
   {
     num: '01', id: 'ai', eyebrow: 'Intelligence', img: '/divisions/ai.jpg',
     name: 'Divinus AI · Vision Africa',
-    tagline: 'African AI capability — built, taught, and deployed where it counts.',
+    status: { label: 'Active', active: true },
+    mandate: 'Building and deploying African AI capability — for the institutions, businesses, and governments shaping the next decade.',
     intro:
       'Africa’s AI opportunity is not a future story; it is a present one. We build and embed the AI capability the continent will run on — for the institutions, businesses, and governments shaping the next decade.',
     serviceTitle: 'What we do',
@@ -54,6 +57,8 @@ const DIVISIONS: Division[] = [
   {
     num: '02', id: 'advisory', eyebrow: 'Strategy', img: '/divisions/advisory.jpg',
     name: 'Divinus Advisory',
+    status: { label: 'Active', active: true },
+    mandate: 'Strategic and operational counsel for founders and leaders who need the answer to compound, not just the deck.',
     tagline: 'Where Strategy Meets Substance.',
     intro:
       'We do not write decks for a living. We diagnose before we prescribe, build alongside our clients, and stay until the work has taken root. Advisory is for leaders who want the answer to compound.',
@@ -74,7 +79,8 @@ const DIVISIONS: Division[] = [
   {
     num: '03', id: 'exchange', eyebrow: 'Community', img: '/divisions/exchange.jpg',
     name: 'Divinus Exchange',
-    tagline: 'Where Substance Meets Community.',
+    status: { label: 'In Development', active: false },
+    mandate: 'The community platform of the group — where African men and women of standard find their people.',
     intro:
       'Exchange is the consumer platform of the group — the place individuals meet Divinus directly. Two communities live here: Men of Substance and Genesis Woman. Both run to one standard.',
     serviceTitle: 'The platform',
@@ -88,6 +94,8 @@ const DIVISIONS: Division[] = [
   {
     num: '04', id: 'labs', eyebrow: 'Products', img: '/divisions/labs.jpg',
     name: 'Divinus Labs',
+    status: { label: 'Launching Q4 2026', active: false },
+    mandate: 'Software products and digital systems engineered for African markets — built to be owned, not rented.',
     intro:
       'Labs builds software products and digital systems engineered for African markets — built to be owned, not rented; built to scale, not to demo.',
     serviceTitle: 'What we build',
@@ -106,7 +114,8 @@ const DIVISIONS: Division[] = [
   {
     num: '05', id: 'capital', eyebrow: 'Education', img: '/divisions/capital.jpg',
     name: 'Divinus Capital',
-    tagline: 'Education Before Action.',
+    status: { label: 'Launching Q3 2026', active: false },
+    mandate: 'Financial education for the African individual — because understanding capital is the first act of building it.',
     intro:
       'This is not a signals group. It is a school. Divinus Capital is the group’s financial education division — the place individuals come to learn how capital actually works, with the discipline to use it.',
     serviceTitle: 'What we offer',
@@ -120,6 +129,8 @@ const DIVISIONS: Division[] = [
   {
     num: '06', id: 'partners', eyebrow: 'Alliances', img: '/divisions/partners.jpg',
     name: 'Strategic Partners',
+    status: { label: 'In Development', active: false },
+    mandate: 'Long-horizon alliances with the institutions, governments, and organisations building the continent alongside us.',
     tagline: 'One Group. One Standard.',
     intro:
       'The continent will not be built by any one institution. Strategic Partners is the division through which Divinus enters long-horizon partnerships with the organisations whose mandate aligns with ours.',
@@ -139,6 +150,8 @@ const DIVISIONS: Division[] = [
   {
     num: '07', id: 'foundation', eyebrow: 'Impact', img: '/divisions/foundation.jpg',
     name: 'The Divinus Foundation',
+    status: { label: 'Launching Q2 2027', active: false },
+    mandate: 'The philanthropic arm of the group — investing in the young Africans the continent cannot afford to leave behind.',
     intro:
       'The Foundation is where conviction meets contribution. It is the philanthropic arm of the group — funded by the group, operated independently, accountable to mission first.',
     serviceTitle: 'Focus areas',
@@ -230,17 +243,37 @@ export default function DivisionsPage() {
             <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 lg:items-stretch">
               <div className="group lg:col-span-5 flex flex-col justify-between gap-10">
                 <div>
-                  <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
-                    {d.num} / {d.eyebrow}
-                  </p>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                    <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
+                      {d.num} / {d.eyebrow}
+                    </p>
+                    <span
+                      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] ${
+                        d.status.active
+                          ? 'border-[#C9A84C]/40 text-[#C9A84C]'
+                          : 'border-neutral-700 text-neutral-400'
+                      }`}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          d.status.active ? 'bg-[#C9A84C]' : 'border border-neutral-500 bg-transparent'
+                        }`}
+                      />
+                      {d.status.label}
+                    </span>
+                  </div>
                   <h2 id={`${d.id}-title`} className="mt-6 text-[clamp(34px,4.6vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
                     <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{d.name}</span></span>
                   </h2>
                   {d.tagline && (
-                    <p className="mt-6 text-lg sm:text-xl font-medium text-neutral-200 italic text-pretty">
+                    <p className="mt-5 text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">
                       {d.tagline}
                     </p>
                   )}
+                  <p className="mt-5 text-lg sm:text-xl font-medium text-neutral-200 text-pretty">
+                    {d.mandate}
+                  </p>
                 </div>
                 <div className="relative aspect-[4/3] w-full max-w-[88%] overflow-hidden rounded-md">
                   <Image

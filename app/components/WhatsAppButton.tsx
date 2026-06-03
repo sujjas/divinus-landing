@@ -1,8 +1,7 @@
 'use client';
 
-// TODO: replace with the client's WhatsApp number (digits only, country code first, no '+').
-// Until set, the link points to wa.me's landing page so the icon is still visible for review.
-const WHATSAPP_NUMBER = '';
+// Client's WhatsApp number — digits only, country code first, no '+'. (+44 7908 739608)
+const WHATSAPP_NUMBER = '447908739608';
 
 export default function WhatsAppButton() {
   const href = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : 'https://wa.me/';

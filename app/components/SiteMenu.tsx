@@ -10,11 +10,12 @@ const MENU_ITEMS = [
   { label: 'Communities', ariaLabel: 'Communities',           link: '/communities' },
   { label: 'Events',      ariaLabel: 'Events and convenings', link: '/events' },
   { label: 'Insights',    ariaLabel: 'Writing and insights',  link: '/blog' },
+  { label: 'Investors',   ariaLabel: 'Investor relations',    link: '/investors' },
   { label: 'Connect',     ariaLabel: 'Get in touch',          link: '/contact' },
 ];
 
 const SOCIAL_ITEMS = [
-  { label: 'LinkedIn',  link: 'https://www.linkedin.com/in/divinus-investmet-group/' },
+  { label: 'LinkedIn',  link: 'https://www.linkedin.com/in/divinus-investment-group/' },
   { label: 'Instagram', link: 'https://www.instagram.com/divinus_investment_group?igsh=OHpibzQ1eWNtN2l5&utm_source=qr' },
   { label: 'X',         link: 'https://x.com/divinus_ai?s=21&t=8ojLx-hNg3eHv6iQt1Q5UA' },
 ];

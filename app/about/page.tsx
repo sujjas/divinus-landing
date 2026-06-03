@@ -29,14 +29,28 @@ const VALUES = [
 const LEADERS = [
   {
     name: 'Danston Mugarura',
+    title: 'CEO, Divinus Group',
     img: '/team/danston-mugarura.jpg',
+    bio: [
+      'Danston Mugarura is an entrepreneur, author, investor, and transformational leader with over three decades of experience building businesses, developing people, and leading high-performing organisations across Europe, Africa, the Middle East, and the United States.',
+      'As CEO of Divinus Group, he builds purpose-driven ventures at the intersection of business, technology, innovation, and human development — helping individuals and companies unlock potential and create sustainable impact.',
+      'Having built multimillion-dollar enterprises and led large commercial teams across Europe, Danston is recognised for his ability to see potential, develop talent, and transform ideas into scalable solutions. He is also the founder of Code 1, a human transformation and leadership platform.',
+      'Known as “The Restorer,” Danston believes true transformation begins by restoring people before rebuilding systems — unlocking human potential and developing the leaders of what comes next.',
+    ],
     socials: [
       { label: 'LinkedIn', icon: 'fa-brands fa-linkedin-in', href: 'https://www.linkedin.com/in/danston-m-88bbb172' },
     ],
   },
   {
     name: 'Mulondo Daniel',
+    title: 'Hybrid Institutional Strategist',
     img: '/team/mulondo-daniel.jpg',
+    bio: [
+      'Mulondo Daniel is a hybrid institutional strategist, financial markets advisor, and portfolio architect with over twelve years of experience navigating global capital markets — spanning digital assets, equities, precious metals, and AI-driven infrastructure.',
+      'At Divinus Group, Daniel leads private capital, digital asset advisory, and portfolio structuring — bridging institutional risk discipline with the new frontier of crypto, AI, and emerging-market opportunity. His philosophy rests on three pillars: alpha generation, institutional risk architecture, and long-term compounding.',
+      'He has delivered eight consecutive profitable years across spot and derivatives markets, with risk-managed exposure across BTC, ETH, SOL, and BNB, gold as a global macro hedge, and selective positions in AI-driven equities including NVDA, TSLA, and META.',
+      'Beyond Divinus, Daniel leads Vision Africa AI Global — a platform advancing AI education, financial intelligence, and investor ecosystem development across the continent, bringing institutional-grade strategy to a new generation of African investors long underserved by global capital markets.',
+    ],
     socials: [
       { label: 'LinkedIn', icon: 'fa-brands fa-linkedin-in', href: 'https://www.linkedin.com/in/mulondodaniel' },
       { label: 'X',        icon: 'fa-brands fa-x-twitter',   href: 'https://x.com/mulondodaniel_' },
@@ -297,20 +311,32 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 gap-px bg-neutral-800 border border-neutral-800">
-            {LEADERS.map((p) => (
-              <article key={p.name} className="group relative bg-neutral-950 aspect-[3/4] overflow-hidden">
-                <Image
-                  src={p.img}
-                  alt={p.name}
-                  fill
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  className="duotone object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/10" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{p.name}</h3>
-                  <ul className="mt-5 flex items-center gap-3">
+          <div className="mt-12 sm:mt-16 space-y-16 sm:space-y-24">
+            {LEADERS.map((p, i) => (
+              <article
+                key={p.name}
+                className="group grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8 items-start"
+              >
+                <div className={`lg:col-span-5 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <div className="relative aspect-[3/4] overflow-hidden bg-neutral-900 border border-neutral-800">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="duotone object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                    />
+                  </div>
+                </div>
+                <div className={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  <h3 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">{p.name}</h3>
+                  <p className="mt-2 text-sm font-mono uppercase tracking-[0.18em] text-[#C9A84C]">{p.title}</p>
+                  <div className="mt-8 space-y-5 text-[15px] sm:text-base leading-[1.7] text-neutral-300 text-pretty">
+                    {p.bio.map((para, idx) => (
+                      <p key={idx}>{para}</p>
+                    ))}
+                  </div>
+                  <ul className="mt-8 flex items-center gap-3">
                     {p.socials.map((s) => (
                       <li key={s.label}>
                         <a
