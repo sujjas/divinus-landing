@@ -133,16 +133,15 @@ emails a short "new subscriber" note.
 1. Create a Google Sheet, e.g. **"Divinus — Website Submissions"**.
 2. **Extensions → Apps Script**, delete the boilerplate, and paste the entire
    contents of **`scripts/google-apps-script.gs`**.
-3. (Optional) set `SECRET` at the top of that script to a random string, and use
-   the **same** value for `GOOGLE_SHEET_SECRET`.
-4. **Deploy → New deployment → Web app**:
+3. **Deploy → New deployment → Web app**:
    - *Execute as:* **Me**
-   - *Who has access:* **Anyone**
+   - *Who has access:* **Anyone** ⚠️ (must be plain "Anyone", **not** "Anyone with
+     Google account" — the latter bounces the server's POST to a login page).
    - Deploy, authorise, and copy the **Web app URL** (ends in `/exec`).
-5. Set in `.env.local` (and Vercel):
+4. Set in `.env.local` (and Vercel):
    ```
    GOOGLE_SHEET_WEBHOOK_URL=https://script.google.com/macros/s/AKfyc.../exec
-   GOOGLE_SHEET_SECRET=<same as the script, or leave blank>
+   GOOGLE_SHEET_SECRET=<optional; only if you set FORM_SECRET, below>
    ```
 
 The script auto-creates a **Contact** tab and a **Newsletter** tab on first use.
@@ -151,7 +150,33 @@ check.
 
 > If you later edit the script, you must create a **new deployment version** for
 > changes to take effect (Manage deployments → edit → deploy new version). The
-> `/exec` URL stays the same.
+> `/exec` URL stays the same. **Script-property** changes (below) apply
+> immediately — no redeploy needed.
+
+### Alerts: Telegram + email on every submission
+The same script also **pings Telegram** and **emails you** per submission. Secrets
+live in **Script Properties** (not the code): Apps Script → **⚙️ Project Settings →
+Script properties → Add**, then **Save script properties**:
+
+| Property | Value | Effect if blank |
+|---|---|---|
+| `TELEGRAM_BOT_TOKEN` | BotFather token | Telegram disabled |
+| `TELEGRAM_CHAT_ID` | chat/group id (e.g. `926128815`) | Telegram disabled |
+| `NOTIFY_EMAIL` | inbox for alerts (`divinusblack@gmail.com`) | email disabled |
+| `FORM_SECRET` | optional shared secret (match `GOOGLE_SHEET_SECRET`) | no auth check |
+
+- **Telegram bot:** message @BotFather → `/newbot` → copy the token. Open your bot,
+  send it any message, then read your chat id from
+  `https://api.telegram.org/bot<TOKEN>/getUpdates`. (For a team, add the bot to a
+  group and use the group's chat id.)
+- **First run needs authorization** — the email + external-request permissions are
+  granted the first time you run the `testAlerts` function in the editor (function
+  dropdown → `testAlerts` → Run → approve). Use `testAlerts` any time to verify;
+  it logs which properties are set and sends one test of each.
+- The contact email's **reply-to** is the submitter, so you can reply directly.
+
+> ⚠️ Common gotcha: after adding Script Properties you **must click "Save script
+> properties"** or they silently don't persist (and alerts quietly no-op).
 
 ---
 
