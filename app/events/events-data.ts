@@ -1,3 +1,7 @@
+import { getClient } from '../../sanity/lib/client';
+import { sanityConfigured } from '../../sanity/env';
+import { urlForImage } from '../../sanity/lib/image';
+
 export type EventType = 'Forum' | 'Retreat' | 'Dinner' | 'Programme' | 'Open House';
 
 export type EventItem = {
@@ -21,7 +25,12 @@ export type EventItem = {
   expect: string[];        // bullets
 };
 
-export const EVENTS: EventItem[] = [
+// ─────────────────────────────────────────────────────────────────────────────
+// SEED CONTENT — migration source + fallback when Sanity isn't configured.
+// See app/blog/posts.ts for the rationale. The `id` is the URL segment and is
+// migrated into Sanity as the document slug so /events/<id> URLs never change.
+// ─────────────────────────────────────────────────────────────────────────────
+export const SEED_EVENTS: EventItem[] = [
   {
     id: 'mos-leadership-forum-2026',
     date: '2026-06-14',
@@ -207,9 +216,80 @@ export const EVENTS: EventItem[] = [
   },
 ];
 
-export const UPCOMING_EVENTS = EVENTS.filter(e => e.status === 'upcoming');
-export const PAST_EVENTS = EVENTS.filter(e => e.status === 'past');
+// ─────────────────────────────────────────────────────────────────────────────
+// SANITY-BACKED GETTERS
+// ─────────────────────────────────────────────────────────────────────────────
 
-export function eventById(id: string): EventItem | undefined {
-  return EVENTS.find(e => e.id === id);
+const EVENT_PROJECTION = `{
+  "id": slug.current,
+  date,
+  displayDate,
+  title,
+  type,
+  location,
+  blurb,
+  ctaLabel,
+  ctaHref,
+  image,
+  status,
+  longBlurb,
+  format,
+  capacity,
+  hosts[]{ name, role },
+  agenda[]{ time, item, detail },
+  expect
+}`;
+
+type RawEvent = Omit<EventItem, 'img'> & { image?: unknown };
+
+function fallbackImg(id: string): string {
+  return `https://picsum.photos/seed/divinus-event-${id}/1200/800`;
+}
+
+function mapEvent(raw: RawEvent): EventItem {
+  return {
+    id: raw.id,
+    date: raw.date,
+    displayDate: raw.displayDate,
+    title: raw.title,
+    type: raw.type,
+    location: raw.location,
+    blurb: raw.blurb,
+    ctaLabel: raw.ctaLabel,
+    ctaHref: raw.ctaHref,
+    img: urlForImage(raw.image as never) ?? fallbackImg(raw.id),
+    status: raw.status,
+    longBlurb: raw.longBlurb ?? [],
+    format: raw.format ?? '',
+    capacity: raw.capacity ?? '',
+    hosts: raw.hosts ?? [],
+    agenda: raw.agenda ?? [],
+    expect: raw.expect ?? [],
+  };
+}
+
+export async function getAllEvents(): Promise<EventItem[]> {
+  if (!sanityConfigured) return SEED_EVENTS;
+  try {
+    const raw = await getClient().fetch<RawEvent[]>(
+      `*[_type == "event" && defined(slug.current)] | order(date desc) ${EVENT_PROJECTION}`,
+    );
+    return raw.length ? raw.map(mapEvent) : SEED_EVENTS;
+  } catch {
+    return SEED_EVENTS;
+  }
+}
+
+export async function getEventById(id: string): Promise<EventItem | undefined> {
+  if (!sanityConfigured) return SEED_EVENTS.find((e) => e.id === id);
+  try {
+    const raw = await getClient().fetch<RawEvent | null>(
+      `*[_type == "event" && slug.current == $id][0] ${EVENT_PROJECTION}`,
+      { id },
+    );
+    if (raw) return mapEvent(raw);
+  } catch {
+    /* fall through to seed */
+  }
+  return SEED_EVENTS.find((e) => e.id === id);
 }

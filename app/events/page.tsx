@@ -2,7 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ParticleField from '../components/ParticleField';
 import PageHeadlines from '../components/PageHeadlines';
-import { UPCOMING_EVENTS, PAST_EVENTS, type EventItem } from './events-data';
+import { getAllEvents, type EventItem } from './events-data';
+
+// Refresh CMS content roughly once a minute (ISR).
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Events — Divinus Investment Group',
@@ -47,7 +50,11 @@ function EventCard({ event }: { event: EventItem }) {
   );
 }
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const events = await getAllEvents();
+  const upcoming = events.filter(e => e.status === 'upcoming');
+  const past = events.filter(e => e.status === 'past');
+
   return (
     <main>
       <PageHeadlines />
@@ -114,7 +121,7 @@ export default function EventsPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {UPCOMING_EVENTS.map(e => <EventCard key={e.id} event={e} />)}
+            {upcoming.map(e => <EventCard key={e.id} event={e} />)}
           </div>
         </div>
       </section>
@@ -137,7 +144,7 @@ export default function EventsPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PAST_EVENTS.map(e => <EventCard key={e.id} event={e} />)}
+            {past.map(e => <EventCard key={e.id} event={e} />)}
           </div>
         </div>
       </section>

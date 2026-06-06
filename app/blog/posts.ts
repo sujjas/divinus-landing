@@ -1,3 +1,8 @@
+import { getClient } from '../../sanity/lib/client';
+import { sanityConfigured } from '../../sanity/env';
+import { urlForImage } from '../../sanity/lib/image';
+import { portableTextToSections } from '../../sanity/lib/portableText';
+
 export type Category = 'Capital' | 'Strategy' | 'AI' | 'Communities' | 'Foundation';
 
 export type Section =
@@ -21,7 +26,14 @@ export type Post = {
 
 export const CATEGORIES: Category[] = ['Capital', 'Strategy', 'AI', 'Communities', 'Foundation'];
 
-export const POSTS: Post[] = [
+// ─────────────────────────────────────────────────────────────────────────────
+// SEED CONTENT
+// The original hard-coded posts. These are (a) the source the migration script
+// pushes into Sanity, and (b) the fallback the site renders if Sanity is not yet
+// configured — so the site is never blank. Once Sanity is configured + seeded,
+// the live content comes from the CMS via the getters below.
+// ─────────────────────────────────────────────────────────────────────────────
+export const SEED_POSTS: Post[] = [
   {
     slug: 'education-before-action',
     title: 'Education before action: why we built Capital as a school, not a signals group.',
@@ -153,6 +165,87 @@ export const POSTS: Post[] = [
   },
 ];
 
-export function postBySlug(slug: string): Post | undefined {
-  return POSTS.find(p => p.slug === slug);
+// ─────────────────────────────────────────────────────────────────────────────
+// SANITY-BACKED GETTERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+const POST_PROJECTION = `{
+  "slug": slug.current,
+  title,
+  excerpt,
+  category,
+  date,
+  readMins,
+  author,
+  authorRole,
+  image,
+  body
+}`;
+
+type RawPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: Category;
+  date: string;
+  readMins: number;
+  author: string;
+  authorRole: string;
+  image?: unknown;
+  body?: unknown;
+};
+
+// "2026-05-02" -> "02 May 2026" (timezone-safe, no Date parsing surprises).
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function formatPostDate(iso: string): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+  if (!m) return iso;
+  const [, y, mo, d] = m;
+  return `${d} ${MONTHS[Number(mo) - 1] ?? ''} ${y}`;
+}
+
+function fallbackImg(slug: string): string {
+  return `https://picsum.photos/seed/divinus-blog-${slug}/1600/1000`;
+}
+
+function mapPost(raw: RawPost): Post {
+  return {
+    slug: raw.slug,
+    title: raw.title,
+    excerpt: raw.excerpt,
+    category: raw.category,
+    date: raw.date,
+    displayDate: formatPostDate(raw.date),
+    readMins: raw.readMins,
+    author: raw.author,
+    authorRole: raw.authorRole,
+    img: urlForImage(raw.image as never) ?? fallbackImg(raw.slug),
+    body: portableTextToSections(raw.body),
+  };
+}
+
+export async function getAllPosts(): Promise<Post[]> {
+  if (!sanityConfigured) return SEED_POSTS;
+  try {
+    const raw = await getClient().fetch<RawPost[]>(
+      `*[_type == "post" && defined(slug.current)] | order(date desc) ${POST_PROJECTION}`,
+    );
+    return raw.length ? raw.map(mapPost) : SEED_POSTS;
+  } catch {
+    return SEED_POSTS;
+  }
+}
+
+export async function getPostBySlug(slug: string): Promise<Post | undefined> {
+  if (!sanityConfigured) return SEED_POSTS.find((p) => p.slug === slug);
+  try {
+    const raw = await getClient().fetch<RawPost | null>(
+      `*[_type == "post" && slug.current == $slug][0] ${POST_PROJECTION}`,
+      { slug },
+    );
+    if (raw) return mapPost(raw);
+  } catch {
+    /* fall through to seed */
+  }
+  return SEED_POSTS.find((p) => p.slug === slug);
 }

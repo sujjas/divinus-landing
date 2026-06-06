@@ -1,35 +1,54 @@
 import { NextResponse } from 'next/server';
+import { sendContactNotification, type ContactPayload } from '@/lib/resend';
+import { appendToSheet } from '@/lib/google-sheet';
 
-// TODO: wire to a real provider (Resend / Postmark / SES / Notion / Linear / etc.)
-// before launch. Until then this endpoint accepts submissions, logs them, and
-// returns 200 so the UI flow can be reviewed end-to-end.
+// Receives ContactForm submissions and fans them out to two sinks:
+//   1. Email notification to the team via Resend
+//   2. A new row in the Google Sheet via the Apps Script web app
+// The submission succeeds (200) as long as at least one sink records it, so a
+// transient outage in one provider never loses the lead from the other. If both
+// fail it returns 502 and the form shows its error state.
 //
-// Suggested env vars when wiring real delivery:
-//   RESEND_API_KEY            — provider key
-//   CONTACT_TO_EMAIL          — inbox to deliver to (e.g. divinusblack@gmail.com)
-//   CONTACT_FROM_EMAIL        — verified sender domain
-//
-// Implementation sketch:
-//   const { Resend } = await import('resend');
-//   const resend = new Resend(process.env.RESEND_API_KEY!);
-//   await resend.emails.send({ from, to, subject, text });
+// Required env (see HANDOVER.md): RESEND_API_KEY, CONTACT_FROM_EMAIL,
+// CONTACT_TO_EMAIL, GOOGLE_SHEET_WEBHOOK_URL, (optional) GOOGLE_SHEET_SECRET.
 
 export async function POST(req: Request) {
-  let body: unknown;
+  let body: ContactPayload;
   try {
-    body = await req.json();
+    body = (await req.json()) as ContactPayload;
   } catch {
     return NextResponse.json({ error: 'invalid-json' }, { status: 400 });
   }
 
-  // Basic shape check — keep liberal until a real schema is in place.
   if (!body || typeof body !== 'object') {
     return NextResponse.json({ error: 'invalid-body' }, { status: 400 });
   }
 
-  // Dev/visibility: surface submissions in the server log so reviewers can
-  // confirm the flow works before email delivery is wired up.
-  console.log('[contact] submission', body);
+  // Minimal validation — name + email are always required by the form.
+  if (!body.name || !body.email) {
+    return NextResponse.json({ error: 'missing-fields' }, { status: 400 });
+  }
 
-  return NextResponse.json({ ok: true });
+  const [emailed, sheeted] = await Promise.all([
+    sendContactNotification(body),
+    appendToSheet({
+      type: 'contact',
+      mode: body.mode ?? '',
+      subject: body.subjectLabel || body.subject || '',
+      name: body.name ?? '',
+      email: body.email ?? '',
+      organisation: body.organisation ?? '',
+      phone: body.phone ?? '',
+      preferredTime: body.preferredTime ?? '',
+      message: body.message ?? '',
+      route: body.route ?? '',
+    }),
+  ]);
+
+  if (!emailed && !sheeted) {
+    console.error('[contact] both sinks failed', body);
+    return NextResponse.json({ error: 'delivery-failed' }, { status: 502 });
+  }
+
+  return NextResponse.json({ ok: true, emailed, sheeted });
 }

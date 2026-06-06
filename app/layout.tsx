@@ -10,6 +10,8 @@ import AgentationDev from './components/AgentationDev';
 import SmoothScroll from './components/SmoothScroll';
 import WhatsAppButton from './components/WhatsAppButton';
 import GradualBlur from './components/GradualBlur';
+import ChromeGate from './components/ChromeGate';
+import StudioRouteClass from './components/StudioRouteClass';
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -37,26 +39,31 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body className="text-neutral-50 antialiased" style={{ backgroundColor: 'transparent' }}>
-        <SmoothScroll />
-        <DotGridBackground />
-        <CustomCursor />
-        <SiteMenu />
+        <StudioRouteClass />
+        <ChromeGate>
+          <SmoothScroll />
+          <DotGridBackground />
+          <CustomCursor />
+          <SiteMenu />
+        </ChromeGate>
         {children}
-        <Footer />
-        <GradualBlur
-          target="page"
-          position="bottom"
-          height="5rem"
-          strength={2}
-          divCount={6}
-          curve="bezier"
-          exponential
-          opacity={1}
-          zIndex={20}
-        />
-        <WhatsAppButton />
-        <EntranceFx />
-        <AgentationDev />
+        <ChromeGate>
+          <Footer />
+          <GradualBlur
+            target="page"
+            position="bottom"
+            height="5rem"
+            strength={2}
+            divCount={6}
+            curve="bezier"
+            exponential
+            opacity={1}
+            zIndex={20}
+          />
+          <WhatsAppButton />
+          <EntranceFx />
+          <AgentationDev />
+        </ChromeGate>
       </body>
     </html>
   );

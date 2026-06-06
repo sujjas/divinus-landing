@@ -83,6 +83,16 @@ input, textarea, select, [contenteditable="true"] {
   body, body * { cursor: auto !important; }
   #cursor { display: none !important; }
 }
+/* On the Sanity Studio (/studio) the custom cursor is disabled, so restore the
+   native cursor + text selection across the whole subtree (incl. portalled
+   dialogs/menus that mount on <body>). The html-level class wins on specificity. */
+html.studio-route,
+html.studio-route * {
+  cursor: auto !important;
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  user-select: auto !important;
+}
 
 /* Custom cursor */
 #cursor {

@@ -3,7 +3,10 @@ import Image from 'next/image';
 import ParticleField from '../components/ParticleField';
 import PageHeadlines from '../components/PageHeadlines';
 import NewsletterCard from '../components/NewsletterCard';
-import { POSTS, CATEGORIES, type Category, type Post } from './posts';
+import { getAllPosts, CATEGORIES, type Category, type Post } from './posts';
+
+// Refresh CMS content roughly once a minute (ISR).
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Insights — Divinus Investment Group',
@@ -31,8 +34,9 @@ function PostMeta({ post }: { post: Post }) {
   );
 }
 
-export default function BlogPage() {
-  const [featured, ...rest] = POSTS;
+export default async function BlogPage() {
+  const posts = await getAllPosts();
+  const [featured, ...rest] = posts;
 
   return (
     <main>

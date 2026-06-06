@@ -4,15 +4,20 @@ import { notFound } from 'next/navigation';
 import PageHeadlines from '../../components/PageHeadlines';
 import ParticleField from '../../components/ParticleField';
 import NewsletterCard from '../../components/NewsletterCard';
-import { POSTS, postBySlug, type Category, type Post } from '../posts';
+import { getAllPosts, getPostBySlug, type Category, type Post } from '../posts';
 
-export function generateStaticParams() {
-  return POSTS.map(p => ({ slug: p.slug }));
+// Pre-render known slugs; allow new CMS posts to render on demand (ISR).
+export const revalidate = 60;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map(p => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = postBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) return { title: 'Insight not found — Divinus Investment Group' };
   return {
     title: `${post.title} — Divinus Insights`,
@@ -63,11 +68,12 @@ function RelatedCard({ post }: { post: Post }) {
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = postBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = POSTS.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
-  const fallback = POSTS.filter(p => p.slug !== post.slug).slice(0, 3);
+  const allPosts = await getAllPosts();
+  const related = allPosts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
+  const fallback = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
   const relatedPosts = related.length > 0 ? related : fallback;
 
   return (

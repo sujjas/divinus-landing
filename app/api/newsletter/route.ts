@@ -1,17 +1,16 @@
 import { NextResponse } from 'next/server';
+import { sendNewsletterNotification } from '@/lib/resend';
+import { appendToSheet } from '@/lib/google-sheet';
 
-// TODO: wire to a real list provider (Mailchimp / Buttondown / Beehiiv /
-// Resend Audiences / Loops) before launch. For now the endpoint accepts the
-// email, logs it, and returns 200 so the UI flow can be reviewed end-to-end.
-//
-// Suggested env vars when wiring real delivery:
-//   NEWSLETTER_PROVIDER_KEY
-//   NEWSLETTER_LIST_ID
+// Receives NewsletterForm subscriptions and fans them out to:
+//   1. Email notification to the team via Resend
+//   2. A new row in the "Newsletter" tab of the Google Sheet
+// Succeeds (200) if at least one sink records the email. See HANDOVER.md for env.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
-  let body: { email?: unknown } = {};
+  let body: { email?: unknown; source?: unknown } = {};
   try {
     body = await req.json();
   } catch {
@@ -19,11 +18,20 @@ export async function POST(req: Request) {
   }
 
   const email = typeof body.email === 'string' ? body.email.trim() : '';
+  const source = typeof body.source === 'string' ? body.source : '';
   if (!EMAIL_RE.test(email)) {
     return NextResponse.json({ error: 'invalid-email' }, { status: 400 });
   }
 
-  console.log('[newsletter] subscribe', { email });
+  const [emailed, sheeted] = await Promise.all([
+    sendNewsletterNotification(email, source),
+    appendToSheet({ type: 'newsletter', email, source }),
+  ]);
 
-  return NextResponse.json({ ok: true });
+  if (!emailed && !sheeted) {
+    console.error('[newsletter] both sinks failed', { email });
+    return NextResponse.json({ error: 'delivery-failed' }, { status: 502 });
+  }
+
+  return NextResponse.json({ ok: true, emailed, sheeted });
 }

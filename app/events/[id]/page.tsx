@@ -3,15 +3,20 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import PageHeadlines from '../../components/PageHeadlines';
 import ParticleField from '../../components/ParticleField';
-import { EVENTS, eventById, type EventItem } from '../events-data';
+import { getAllEvents, getEventById, type EventItem } from '../events-data';
 
-export function generateStaticParams() {
-  return EVENTS.map(e => ({ id: e.id }));
+// Pre-render known events; allow new CMS events to render on demand (ISR).
+export const revalidate = 60;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const events = await getAllEvents();
+  return events.map(e => ({ id: e.id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const event = eventById(id);
+  const event = await getEventById(id);
   if (!event) return { title: 'Event not found — Divinus Investment Group' };
   return {
     title: `${event.title} — Divinus Events`,
@@ -51,11 +56,12 @@ function EventCard({ event }: { event: EventItem }) {
 
 export default async function EventDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const event = eventById(id);
+  const event = await getEventById(id);
   if (!event) notFound();
 
   const isUpcoming = event.status === 'upcoming';
-  const related = EVENTS.filter(e => e.id !== event.id).slice(0, 3);
+  const allEvents = await getAllEvents();
+  const related = allEvents.filter(e => e.id !== event.id).slice(0, 3);
 
   return (
     <main>

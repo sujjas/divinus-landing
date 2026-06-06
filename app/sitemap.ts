@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next';
-import { POSTS } from './blog/posts';
-import { EVENTS } from './events/events-data';
+import { getAllPosts } from './blog/posts';
+import { getAllEvents } from './events/events-data';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://divinus.com';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const [posts, events] = await Promise.all([getAllPosts(), getAllEvents()]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`,            lastModified: now, changeFrequency: 'monthly', priority: 1.0 },
@@ -20,14 +21,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/terms`,       lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
   ];
 
-  const postRoutes: MetadataRoute.Sitemap = POSTS.map(p => ({
+  const postRoutes: MetadataRoute.Sitemap = posts.map(p => ({
     url: `${SITE_URL}/blog/${p.slug}`,
     lastModified: new Date(p.date),
     changeFrequency: 'yearly',
     priority: 0.6,
   }));
 
-  const eventRoutes: MetadataRoute.Sitemap = EVENTS.map(e => ({
+  const eventRoutes: MetadataRoute.Sitemap = events.map(e => ({
     url: `${SITE_URL}/events/${e.id}`,
     lastModified: new Date(e.date),
     changeFrequency: e.status === 'upcoming' ? 'weekly' : 'yearly',
