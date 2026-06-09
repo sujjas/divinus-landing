@@ -72,6 +72,14 @@ const CATEGORIES = [
   },
 ];
 
+// Open roles. Descriptions to follow — titles only for now.
+const ROLES = [
+  'Agility Officer',
+  'AI Training Facilitators',
+  'Digital Lead',
+  'Business Analysts',
+];
+
 export default function AboutPage() {
   return (
     <main>
@@ -185,29 +193,38 @@ export default function AboutPage() {
                 purposeful, precise, never performative.
               </p>
               <p className="text-lg leading-[1.65] text-neutral-400 text-pretty">
-                Open roles across the group will be listed here. If you see yourself in
-                what we are building, we would rather hear from you early than late.
+                These are the roles we are hiring for now. Full descriptions are on the
+                way — if you see yourself in one, we would rather hear from you early
+                than late.
               </p>
 
-              {/* Open roles — coming soon. Replace this panel with the live roles list. */}
-              <div className="mt-2 rounded-md border border-neutral-800 bg-neutral-900/40 p-8 sm:p-10">
-                <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Open roles</p>
-                <p className="mt-4 text-xl sm:text-2xl font-semibold tracking-tight text-neutral-50 text-balance">
-                  Positions are being finalised.
-                </p>
-                <p className="mt-3 text-base leading-[1.6] text-neutral-400 text-pretty max-w-lg">
-                  The first roles open soon. Register your interest now and we will reach
-                  out the moment a fit opens.
-                </p>
-                <Link
-                  href="/contact?route=careers"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-neutral-50 px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 transition"
-                >
-                  Register your interest
-                  <svg className="cta-arrow h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
+              {/* Open roles. Add a description per role under the title when copy lands. */}
+              <div className="mt-2 rounded-md border border-neutral-800 bg-neutral-900/40 overflow-hidden">
+                <p className="px-8 sm:px-10 pt-8 sm:pt-10 text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Open roles</p>
+                <ul className="mt-5 divide-y divide-neutral-800 border-t border-neutral-800">
+                  {ROLES.map((role) => (
+                    <li key={role}>
+                      <Link
+                        href="/contact?route=careers"
+                        className="group flex items-center justify-between gap-4 px-8 sm:px-10 py-5 hover:bg-neutral-900/60 transition"
+                      >
+                        <span className="text-lg sm:text-xl font-semibold tracking-tight text-neutral-50">{role}</span>
+                        <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.16em] text-neutral-400 group-hover:text-neutral-50 transition">
+                          Apply <span aria-hidden="true" className="transition group-hover:translate-x-1">→</span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <div className="px-8 sm:px-10 py-6 border-t border-neutral-800">
+                  <p className="text-sm leading-[1.6] text-neutral-500 text-pretty">
+                    Don’t see your role but believe you belong here?{' '}
+                    <Link href="/contact?route=careers" className="font-semibold text-neutral-300 underline decoration-neutral-700 underline-offset-[4px] hover:text-neutral-50 hover:decoration-neutral-50 transition">
+                      Register your interest
+                    </Link>
+                    .
+                  </p>
+                </div>
               </div>
             </div>
           </div>
