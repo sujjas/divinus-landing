@@ -9,23 +9,6 @@ export const metadata = {
     'Divinus Investment Group is a multi-division group company building the infrastructure of growth — in organisations, in markets, and in people.',
 };
 
-const ARCHITECTURE = [
-  { num: '01', id: 'ai',         name: 'Divinus AI · Vision Africa', mandate: 'Build, teach, and deploy African AI capability — for the institutions, businesses, and governments shaping the continent.', img: '/divisions/ai.jpg' },
-  { num: '02', id: 'advisory',   name: 'Divinus Advisory',           mandate: 'Where Strategy Meets Substance. We diagnose before we prescribe — and stay until the work has taken root.',               img: '/divisions/advisory.jpg' },
-  { num: '03', id: 'exchange',   name: 'Divinus Exchange',           mandate: 'The platform where substance meets community. Home of Men of Substance and Genesis Woman.',                              img: '/divisions/exchange.jpg' },
-  { num: '04', id: 'labs',       name: 'Divinus Labs',               mandate: 'Software products and digital systems engineered for African markets, built to be owned, not rented.',                  img: '/divisions/labs.jpg' },
-  { num: '05', id: 'capital',    name: 'Divinus Capital',            mandate: 'Education Before Action. A financial education division — not a signals group, not advisory, a school.',                img: '/divisions/capital.jpg' },
-  { num: '06', id: 'partners',   name: 'Strategic Partners',         mandate: 'Long-horizon partnerships with the institutions building the continent — public, private, and philanthropic.',          img: '/divisions/partners.jpg' },
-  { num: '07', id: 'foundation', name: 'The Divinus Foundation',     mandate: 'The philanthropic arm of the group — where conviction meets contribution.',                                              img: '/divisions/foundation.jpg' },
-];
-
-const VALUES = [
-  { name: 'Precision', body: 'Every standard we set is a promise. We refuse to round down.',                icon: 'fa-solid fa-bullseye' },
-  { name: 'Integrity', body: 'What we say privately and what we ship publicly are the same thing.',         icon: 'fa-solid fa-shield-halved' },
-  { name: 'Ambition',  body: 'The scale of the work matches the scale of the continent we serve.',         icon: 'fa-solid fa-mountain' },
-  { name: 'Impact',    body: 'Outcomes outlive the engagement. Substance over spectacle.',                 icon: 'fa-solid fa-bolt' },
-];
-
 const LEADERS = [
   {
     name: 'Danston Mugarura',
@@ -55,6 +38,37 @@ const LEADERS = [
       { label: 'LinkedIn', icon: 'fa-brands fa-linkedin-in', href: 'https://www.linkedin.com/in/mulondodaniel' },
       { label: 'X',        icon: 'fa-brands fa-x-twitter',   href: 'https://x.com/mulondodaniel_' },
     ],
+  },
+];
+
+const CATEGORIES = [
+  {
+    num: '01',
+    name: 'Communities',
+    href: '/communities',
+    img: '/communities/hero.jpg',
+    line: 'Men of Substance and Genesis Woman — where African men and women of standard find their people.',
+  },
+  {
+    num: '02',
+    name: 'Events',
+    href: '/events',
+    img: '/events.jpg',
+    line: 'Gatherings, briefings, and convenings where the Divinus standard is set in person.',
+  },
+  {
+    num: '03',
+    name: 'Insights',
+    href: '/blog',
+    img: '/insights-hero.jpg',
+    line: 'Essays, analysis, and field notes on capital, intelligence, and the African century.',
+  },
+  {
+    num: '04',
+    name: 'Investors',
+    href: '/investors',
+    img: '/divisions/capital.jpg',
+    line: 'The traction, the opportunity, and the round — for those building the continent with us.',
   },
 ];
 
@@ -90,231 +104,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* WHO WE ARE */}
-      <section data-fx="gsap" data-section="who" className="border-t border-neutral-800 py-24 sm:py-32" aria-labelledby="who-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-12 items-start">
-            <div className="lg:col-span-5">
-              <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Who we are</p>
-              <h2 id="who-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">One organism.</span></span>
-                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Not a holding company.</span></span>
-              </h2>
-            </div>
-            <div className="lg:col-span-7 lg:pl-6 space-y-6">
-              <p className="text-lg leading-[1.65] text-neutral-300 text-pretty">
-                Divinus exists at the intersection of capital, intelligence, and community.
-                Seven divisions, one direction — each accountable to the same standard,
-                each contributing to the same architecture of growth.
-              </p>
-              <p className="text-lg leading-[1.65] text-neutral-400 text-pretty">
-                We work with organisations, governments, and individuals that take
-                seriously the next decade of African enterprise. We do not chase
-                trends. We build infrastructure.
-              </p>
-              <p className="text-lg leading-[1.65] text-neutral-400 text-pretty">
-                Divinus is led by a team with experience across strategy, technology,
-                finance, and community development.
-              </p>
-            </div>
-          </div>
-
-          {/* Editorial image strip — duotone, color on hover */}
-          <div className="group mt-16 grid grid-cols-1 sm:grid-cols-12 gap-3">
-            <div className="relative aspect-[16/9] sm:col-span-8 overflow-hidden rounded-md">
-              <Image
-                src="/about-who-1.jpg"
-                alt="One organism"
-                fill
-                sizes="(min-width: 640px) 66vw, 100vw"
-                className="duotone object-cover"
-              />
-            </div>
-            <div className="relative aspect-[16/9] sm:col-span-4 sm:aspect-auto overflow-hidden rounded-md">
-              <Image
-                src="/about-who-2.jpg"
-                alt="Operational rhythm"
-                fill
-                sizes="(min-width: 640px) 33vw, 100vw"
-                className="duotone object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MISSION — single hero-statement block */}
-      <section data-fx="gsap" data-section="mission" data-pin-reveal className="group relative overflow-hidden border-t border-neutral-800 py-32 sm:py-44" aria-labelledby="mission-title">
-        <Image
-          src="/about-mission.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="duotone object-cover"
-          aria-hidden="true"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/55" />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Mission</p>
-          <h2 id="mission-title" className="mt-8 max-w-[20ch] text-[clamp(40px,6.4vw,104px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Build organisations.</span></span>
-            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Develop people.</span></span>
-            <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">Create value that lasts.</span></span>
-          </h2>
-        </div>
-      </section>
-
-      {/* ARCHITECTURE — 7 rows */}
-      <section data-fx="gsap" data-section="arch" className="py-24 sm:py-32" aria-labelledby="arch-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 mb-14 sm:mb-16">
-            <div className="lg:col-span-6">
-              <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The architecture</p>
-              <h2 id="arch-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Seven divisions.</span></span>
-                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">One mandate each.</span></span>
-              </h2>
-            </div>
-            <div className="lg:col-span-6 lg:pl-6 lg:pt-3">
-              <p className="text-lg leading-[1.65] text-neutral-400 text-pretty">
-                The seven divisions are not subsidiaries — they are limbs of a single body.
-                Each carries one mandate. Together they form the infrastructure of growth.
-              </p>
-            </div>
-          </div>
-
-          <div className="border-t border-neutral-800">
-            {ARCHITECTURE.map((d) => (
-              <article key={d.num} className="group grid grid-cols-12 gap-x-6 gap-y-4 py-10 sm:py-12 border-b border-neutral-800 items-stretch">
-                <div className="col-span-12 sm:col-span-1">
-                  <span className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">{d.num}</span>
-                </div>
-                <div className="col-span-12 sm:col-span-7 flex flex-col">
-                  <div className="space-y-4">
-                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{d.name}</h3>
-                    <p className="text-lg leading-[1.6] text-neutral-400 text-pretty max-w-xl">{d.mandate}</p>
-                  </div>
-                  <div className="mt-6 sm:mt-auto sm:pt-8">
-                    <Link
-                      href={`/divisions#${d.id}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-neutral-700 px-5 py-2.5 text-sm font-semibold text-neutral-200 hover:bg-neutral-50 hover:text-neutral-950 hover:border-neutral-50 transition"
-                      aria-label={`Learn more about ${d.name}`}
-                    >
-                      Learn More
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-                <div className="col-span-12 sm:col-span-4">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-                    <Image
-                      src={d.img}
-                      alt=""
-                      fill
-                      sizes="(min-width: 640px) 33vw, 100vw"
-                      className="duotone object-cover"
-                      aria-hidden="true"
-                    />
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-10">
-            <Link
-              href="/divisions"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 hover:text-neutral-50 transition"
-            >
-              Explore each division in full →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* VALUES */}
-      <section data-fx="gsap" data-section="values" className="border-t border-neutral-800 py-24 sm:py-32" aria-labelledby="values-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
-            <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Values</p>
-            <h2 id="values-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-              <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Precision · Integrity ·</span></span>
-              <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Ambition · Impact.</span></span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-neutral-800 border border-neutral-800">
-            {VALUES.map((v, i) => (
-              <article key={v.name} className="group relative bg-neutral-950 p-8 sm:p-10 min-h-[320px] flex flex-col justify-between">
-                <div className="flex items-start justify-between">
-                  <i className={`${v.icon} text-3xl text-neutral-400`} aria-hidden="true" />
-                  <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
-                    {String(i + 1).padStart(2, '0')}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{v.name}</h3>
-                  <p className="mt-4 text-base sm:text-sm leading-[1.7] text-neutral-300 text-pretty">{v.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* OUR STORY — Why We Were Built */}
-      <section data-fx="gsap" data-section="story" className="py-24 sm:py-32" aria-labelledby="story-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10">
-            <div className="lg:col-span-4">
-              <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Our story</p>
-              <h2 id="story-title" className="mt-6 text-[clamp(34px,5vw,56px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
-                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Why we</span></span>
-                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">were built.</span></span>
-              </h2>
-            </div>
-            <div className="lg:col-span-8 lg:pl-6 space-y-7 text-lg leading-[1.7] text-neutral-300 text-pretty">
-              <p>
-                Africa is not short on talent, ambition, or opportunity. It is short
-                on infrastructure — the kind that compounds, the kind that survives
-                a generation, the kind that converts capability into outcomes.
-              </p>
-              <div className="group relative aspect-[16/9] overflow-hidden rounded-md my-2">
-                <Image
-                  src="/divisions/labs.jpg"
-                  alt="Why Divinus was built"
-                  fill
-                  sizes="(min-width: 1024px) 66vw, 100vw"
-                  className="duotone object-cover"
-                />
-              </div>
-              <p className="text-neutral-400">
-                Divinus was built to be that infrastructure. Not a fund, not a
-                consultancy, not a community — but the architecture that ties capital,
-                intelligence, and community into a single system. Seven divisions
-                designed to reinforce one another, each running to a standard the
-                next can rely on.
-              </p>
-              <p className="text-neutral-400">
-                We are early. Most of what Divinus will become is still ahead of us.
-                What is settled is the standard, the direction, and the kind of
-                organisation we refuse to be.
-              </p>
-              <p className="text-neutral-200 italic">
-                Premium. Purposeful. Precise. Never performative.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LEADERSHIP */}
-      <section data-fx="gsap" data-section="leadership" className="border-t border-neutral-800 py-20 sm:py-24" aria-labelledby="leadership-title">
+      {/* THE TEAM — leads the page */}
+      <section data-fx="gsap" data-section="leadership" className="border-t border-neutral-800 py-24 sm:py-32" aria-labelledby="leadership-title">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           {/* Intro — single block; eyebrow + tag, title + lede aligned to one column */}
           <div className="max-w-3xl">
-            <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Leadership</p>
+            <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The team</p>
             <h2 id="leadership-title" className="mt-6 text-[clamp(36px,5.4vw,72px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
               <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">The team</span></span>
               <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">behind the standard.</span></span>
@@ -367,6 +162,166 @@ export default function AboutPage() {
                   </ul>
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* JOIN THE TEAM — recruitment; open roles arrive here */}
+      <section data-fx="gsap" data-section="careers" className="border-t border-neutral-800 py-24 sm:py-32" aria-labelledby="careers-title">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-start">
+            <div className="lg:col-span-5">
+              <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Join the team</p>
+              <h2 id="careers-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Build the standard</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">with us.</span></span>
+              </h2>
+            </div>
+            <div className="lg:col-span-7 lg:pl-6 space-y-6">
+              <p className="text-lg leading-[1.65] text-neutral-300 text-pretty">
+                We are assembling a team of operators, builders, and thinkers who hold
+                themselves to the same standard we set for the work — premium,
+                purposeful, precise, never performative.
+              </p>
+              <p className="text-lg leading-[1.65] text-neutral-400 text-pretty">
+                Open roles across the group will be listed here. If you see yourself in
+                what we are building, we would rather hear from you early than late.
+              </p>
+
+              {/* Open roles — coming soon. Replace this panel with the live roles list. */}
+              <div className="mt-2 rounded-md border border-neutral-800 bg-neutral-900/40 p-8 sm:p-10">
+                <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C9A84C]">Open roles</p>
+                <p className="mt-4 text-xl sm:text-2xl font-semibold tracking-tight text-neutral-50 text-balance">
+                  Positions are being finalised.
+                </p>
+                <p className="mt-3 text-base leading-[1.6] text-neutral-400 text-pretty max-w-lg">
+                  The first roles open soon. Register your interest now and we will reach
+                  out the moment a fit opens.
+                </p>
+                <Link
+                  href="/contact?route=careers"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-neutral-50 px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 transition"
+                >
+                  Register your interest
+                  <svg className="cta-arrow h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* THE DIVINUS CONVICTION — ported from the home page */}
+      <section data-section="conviction" className="relative border-t border-neutral-800/70 bg-neutral-900/40 py-24 sm:py-32" aria-labelledby="conviction-title">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-12">
+            <div className="lg:col-span-5">
+              <div className="lg:sticky lg:top-32">
+                <p className="text-xs font-mono uppercase tracking-[0.22em] text-[#C9A84C]">The Divinus Conviction</p>
+                <h2 id="conviction-title" className="mt-8 text-[clamp(34px,4.4vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance leading-[1.05]">
+                  <span className="block">We don’t manage funds.</span>
+                  <span className="block text-neutral-500">We develop people.</span>
+                </h2>
+                <p className="mt-8 max-w-md text-lg leading-[1.55] text-neutral-400 text-pretty">
+                  Every division in this group exists for one reason — to close the gap
+                  between the potential Africa carries and the outcomes it deserves.
+                </p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 lg:pt-2">
+              <div className="space-y-7 text-[16px] sm:text-lg leading-[1.7] text-neutral-300 text-pretty">
+                <p>
+                  Africa’s greatest asset is not its land, its resources, or its markets.
+                  It is its people.
+                </p>
+                <p>
+                  Divinus Investment Group exists to invest in that asset — the African
+                  human. Through education, mentorship, AI augmentation, financial
+                  literacy, and community, every division of the group is designed to
+                  close the gap between raw potential and realised achievement. We do not
+                  manage funds. We develop people — and we build the infrastructure
+                  around them so that development compounds.
+                </p>
+                <p>
+                  This is what we mean by investment. Capital deployed into capability.
+                  Intelligence applied to ambition. Community built around standard. When
+                  a person understands how markets work, leads with discipline, builds
+                  with technology, and is surrounded by others doing the same — that is a
+                  return no balance sheet can fully capture. That is the Divinus mandate.
+                </p>
+              </div>
+
+              <figure className="mt-12 border-l-2 border-[#C9A84C] pl-6 sm:pl-8">
+                <blockquote>
+                  <p className="text-[clamp(22px,2.6vw,34px)] font-semibold display-tight leading-[1.2] text-neutral-50 text-balance">
+                    The elevation of the African individual is the highest-yield investment on the continent.
+                  </p>
+                </blockquote>
+              </figure>
+
+              <div className="mt-12 flex flex-wrap items-center gap-4">
+                <Link href="/divisions" className="inline-flex items-center gap-2 rounded-full bg-neutral-50 px-6 py-3 text-sm font-medium text-neutral-950 hover:bg-neutral-200 transition">
+                  Explore the Divisions <span aria-hidden="true">→</span>
+                </Link>
+                <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-neutral-700 px-6 py-3 text-sm font-medium text-neutral-200 hover:border-neutral-500 hover:text-neutral-50 transition">
+                  Get in touch <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPLORE DIVINUS — category cards linking out to the pages */}
+      <section data-fx="gsap" data-section="explore" className="py-24 sm:py-32" aria-labelledby="explore-title">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 mb-14 sm:mb-16">
+            <div className="lg:col-span-6">
+              <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Explore Divinus</p>
+              <h2 id="explore-title" className="mt-6 text-[clamp(34px,5vw,64px)] font-semibold sm:font-bold display-tight text-neutral-50 text-balance">
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block">Where to go</span></span>
+                <span className="block overflow-hidden pb-[0.2em] -mb-[0.15em]"><span data-anim-line className="block text-neutral-500">from here.</span></span>
+              </h2>
+            </div>
+            <div className="lg:col-span-6 lg:pl-6 lg:pt-3">
+              <p className="text-lg leading-[1.65] text-neutral-400 text-pretty">
+                The work lives across the group. Start with the door that matches what
+                you came for.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-800/70 border border-neutral-800/70">
+            {CATEGORIES.map((c) => (
+              <Link
+                key={c.name}
+                href={c.href}
+                className="group relative bg-neutral-950 p-8 lg:p-10 flex flex-col justify-between min-h-[300px] overflow-hidden transition"
+              >
+                <Image
+                  src={c.img}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="duotone object-cover opacity-70"
+                  aria-hidden="true"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/45 transition-opacity duration-500 group-hover:opacity-60" />
+                <div className="relative flex items-start justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 group-hover:text-neutral-300 transition">
+                    {c.num} / {c.name}
+                  </span>
+                  <span className="text-neutral-600 transition group-hover:text-neutral-50 group-hover:translate-x-1">→</span>
+                </div>
+                <div className="relative">
+                  <h3 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">{c.name}</h3>
+                  <p className="mt-3 text-base leading-[1.55] text-neutral-400 max-w-md text-pretty">{c.line}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
