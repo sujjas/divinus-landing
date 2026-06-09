@@ -205,7 +205,7 @@ export default function AboutPage() {
                   {ROLES.map((role) => (
                     <li key={role}>
                       <Link
-                        href="/contact?route=careers"
+                        href="/contact?route=careers#message-form"
                         className="group flex items-center justify-between gap-4 px-8 sm:px-10 py-5 hover:bg-neutral-900/60 transition"
                       >
                         <span className="text-lg sm:text-xl font-semibold tracking-tight text-neutral-50">{role}</span>
@@ -219,7 +219,7 @@ export default function AboutPage() {
                 <div className="px-8 sm:px-10 py-6 border-t border-neutral-800">
                   <p className="text-sm leading-[1.6] text-neutral-500 text-pretty">
                     Don’t see your role but believe you belong here?{' '}
-                    <Link href="/contact?route=careers" className="font-semibold text-neutral-300 underline decoration-neutral-700 underline-offset-[4px] hover:text-neutral-50 hover:decoration-neutral-50 transition">
+                    <Link href="/contact?route=careers#message-form" className="font-semibold text-neutral-300 underline decoration-neutral-700 underline-offset-[4px] hover:text-neutral-50 hover:decoration-neutral-50 transition">
                       Register your interest
                     </Link>
                     .

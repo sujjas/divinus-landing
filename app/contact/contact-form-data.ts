@@ -6,6 +6,7 @@ export const SUBJECTS = [
   { id: 'divisions',    label: 'Work with a division',        helper: 'AI · Advisory · Labs · Capital · Foundation' },
   { id: 'communities',  label: 'Join a community',            helper: 'Men of Substance · Genesis Woman' },
   { id: 'partnerships', label: 'Partnerships & investors',    helper: 'Strategic partners and investor relations' },
+  { id: 'careers',      label: 'Job application',             helper: 'Apply for an open role across the group' },
   { id: 'press',        label: 'Press & media',               helper: 'Interviews, statements, editorial' },
   { id: 'general',      label: 'General enquiry',             helper: 'Anything else — we’ll route it' },
 ] as const;
