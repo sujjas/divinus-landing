@@ -10,13 +10,13 @@ export const metadata = {
 };
 
 const ARCHITECTURE = [
-  { num: '01', name: 'Divinus AI · Vision Africa', mandate: 'Build, teach, and deploy African AI capability — for the institutions, businesses, and governments shaping the continent.', img: '/divisions/ai.jpg' },
-  { num: '02', name: 'Divinus Advisory',           mandate: 'Where Strategy Meets Substance. We diagnose before we prescribe — and stay until the work has taken root.',               img: '/divisions/advisory.jpg' },
-  { num: '03', name: 'Divinus Exchange',           mandate: 'The platform where substance meets community. Home of Men of Substance and Genesis Woman.',                              img: '/divisions/exchange.jpg' },
-  { num: '04', name: 'Divinus Labs',               mandate: 'Software products and digital systems engineered for African markets, built to be owned, not rented.',                  img: '/divisions/labs.jpg' },
-  { num: '05', name: 'Divinus Capital',            mandate: 'Education Before Action. A financial education division — not a signals group, not advisory, a school.',                img: '/divisions/capital.jpg' },
-  { num: '06', name: 'Strategic Partners',         mandate: 'Long-horizon partnerships with the institutions building the continent — public, private, and philanthropic.',          img: '/divisions/partners.jpg' },
-  { num: '07', name: 'The Divinus Foundation',     mandate: 'The philanthropic arm of the group — where conviction meets contribution.',                                              img: '/divisions/foundation.jpg' },
+  { num: '01', id: 'ai',         name: 'Divinus AI · Vision Africa', mandate: 'Build, teach, and deploy African AI capability — for the institutions, businesses, and governments shaping the continent.', img: '/divisions/ai.jpg' },
+  { num: '02', id: 'advisory',   name: 'Divinus Advisory',           mandate: 'Where Strategy Meets Substance. We diagnose before we prescribe — and stay until the work has taken root.',               img: '/divisions/advisory.jpg' },
+  { num: '03', id: 'exchange',   name: 'Divinus Exchange',           mandate: 'The platform where substance meets community. Home of Men of Substance and Genesis Woman.',                              img: '/divisions/exchange.jpg' },
+  { num: '04', id: 'labs',       name: 'Divinus Labs',               mandate: 'Software products and digital systems engineered for African markets, built to be owned, not rented.',                  img: '/divisions/labs.jpg' },
+  { num: '05', id: 'capital',    name: 'Divinus Capital',            mandate: 'Education Before Action. A financial education division — not a signals group, not advisory, a school.',                img: '/divisions/capital.jpg' },
+  { num: '06', id: 'partners',   name: 'Strategic Partners',         mandate: 'Long-horizon partnerships with the institutions building the continent — public, private, and philanthropic.',          img: '/divisions/partners.jpg' },
+  { num: '07', id: 'foundation', name: 'The Divinus Foundation',     mandate: 'The philanthropic arm of the group — where conviction meets contribution.',                                              img: '/divisions/foundation.jpg' },
 ];
 
 const VALUES = [
@@ -185,13 +185,27 @@ export default function AboutPage() {
 
           <div className="border-t border-neutral-800">
             {ARCHITECTURE.map((d) => (
-              <article key={d.num} className="group grid grid-cols-12 gap-x-6 gap-y-4 py-10 sm:py-12 border-b border-neutral-800 items-start">
+              <article key={d.num} className="group grid grid-cols-12 gap-x-6 gap-y-4 py-10 sm:py-12 border-b border-neutral-800 items-stretch">
                 <div className="col-span-12 sm:col-span-1">
                   <span className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">{d.num}</span>
                 </div>
-                <div className="col-span-12 sm:col-span-7 space-y-4">
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{d.name}</h3>
-                  <p className="text-lg leading-[1.6] text-neutral-400 text-pretty max-w-xl">{d.mandate}</p>
+                <div className="col-span-12 sm:col-span-7 flex flex-col">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{d.name}</h3>
+                    <p className="text-lg leading-[1.6] text-neutral-400 text-pretty max-w-xl">{d.mandate}</p>
+                  </div>
+                  <div className="mt-6 sm:mt-auto sm:pt-8">
+                    <Link
+                      href={`/divisions#${d.id}`}
+                      className="inline-flex items-center gap-2 rounded-full border border-neutral-700 px-5 py-2.5 text-sm font-semibold text-neutral-200 hover:bg-neutral-50 hover:text-neutral-950 hover:border-neutral-50 transition"
+                      aria-label={`Learn more about ${d.name}`}
+                    >
+                      Learn More
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
                 <div className="col-span-12 sm:col-span-4">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-md">
